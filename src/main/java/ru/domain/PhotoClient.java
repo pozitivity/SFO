@@ -22,7 +22,6 @@ public class PhotoClient implements Serializable {
 	@Id
 	@Column(name = "photo_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@OneToMany(mappedBy = "photo_client", fetch = FetchType.EAGER)
 	private Long photoId;
 	
 	@Column(name = "photo")

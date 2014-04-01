@@ -2,6 +2,8 @@ package ru.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +25,10 @@ public class Logo implements Serializable{
 	
 	@Column(name = "logo")
 	private String logo;
+	
+	@OneToOne(optional = false, mappedBy = "logo", fetch = FetchType.EAGER, 
+	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+	private Organization contacts;
 	
 	public Logo(){
 		
@@ -47,5 +53,13 @@ public class Logo implements Serializable{
 	
 	public void setLogo(String logo){
 		this.logo = logo;
+	}
+	
+	public Organization getContacts(){
+		return contacts;
+	}
+	
+	public void setContacts(Organization contacts){
+		this.contacts = contacts;
 	}
 }

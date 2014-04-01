@@ -48,11 +48,11 @@ public class Organization implements Serializable{
 	@JoinColumn(name = "info_id")
 	private InfoOrganization info;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "logo_id")
 	private Logo logo;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	

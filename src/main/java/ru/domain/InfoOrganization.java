@@ -18,24 +18,23 @@ public class InfoOrganization implements Serializable {
 	@Id
 	@Column(name = "info_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@OneToMany(mappedBy = "info_organization", fetch = FetchType.EAGER)
 	private Long infoId;
 	
 	@Column(name = "info")
 	private String info;
 	
 	@OneToOne(optional = false, mappedBy = "info", fetch = FetchType.EAGER, 
-			cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
 	private Organization organization;
 	
 	public InfoOrganization() {
 		
 	}
 	
-	public InfoOrganization(Long infoId, String info, Organization organization){
+	public InfoOrganization(Long infoId, String info){
 		this.infoId = infoId;
 		this.info = info;
-		this.organization = organization;
+		
 	}
 	
 	public Long getInfoId(){
@@ -52,6 +51,14 @@ public class InfoOrganization implements Serializable {
 	
 	public void setInfo(String info){
 		this.info = info;
+	}
+	
+	public Organization getContacts(){
+		return organization;
+	}
+	
+	public void setContacts(Organization contacts){
+		this.organization = contacts;
 	}
 }
 

@@ -29,7 +29,6 @@ public class Rubric implements Serializable {
 	private Long mainRubricId;
 	
 	
-	
 	public Rubric(){
 		
 	}
