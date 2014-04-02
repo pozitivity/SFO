@@ -24,6 +24,8 @@ public class JsonOrganization {
 	
 	private JsonUser user;
 	
+	private String name;
+	
 	public JsonOrganization(){
 		
 	}
@@ -111,6 +113,14 @@ public class JsonOrganization {
 	
 	public void setUser(JsonUser user){
 		this.user = user;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

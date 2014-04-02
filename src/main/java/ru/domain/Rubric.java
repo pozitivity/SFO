@@ -19,15 +19,14 @@ public class Rubric implements Serializable {
 	@Id
 	@Column(name = "rubric_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@OneToMany(mappedBy = "main_rubric", fetch = FetchType.EAGER)
 	private Long rubricId;
 	
 	@Column(name = "rubric_name")
 	private String rubricName;
 	
+	
 	@Column(name = "main_id")
 	private Long mainRubricId;
-	
 	
 	public Rubric(){
 		
@@ -41,7 +40,7 @@ public class Rubric implements Serializable {
 	}
 	
 	public Long getRubricId(){
-		return mainRubricId;
+		return rubricId;
 	}
 	
 	public void setRubricId(Long rubricId){
@@ -60,7 +59,7 @@ public class Rubric implements Serializable {
 		return mainRubricId;
 	}
 	
-	public void setMainRubricId(Long MainRubricId){
+	public void setMainRubricId(Long mainRubricId){
 		this.mainRubricId = mainRubricId;
 	}
 }

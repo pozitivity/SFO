@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "photo_client")
+@Table(name = "photo")
 public class PhotoClient implements Serializable {
 
 	@Id

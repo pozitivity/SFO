@@ -56,12 +56,15 @@ public class Organization implements Serializable{
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@Column(name="name")
+	private String name;
+	
 	public Organization() {
 		
 	}
 	
 	public Organization(Long organizationId, String street, Rubric rubric, String postcode, String website, 
-			String phone, InfoOrganization info, Logo logo, User user){
+			String phone, InfoOrganization info, Logo logo, User user,String name){
 		this.organizationId = organizationId;
 		this.street = street;
 		this.rubric = rubric;
@@ -71,6 +74,7 @@ public class Organization implements Serializable{
 		this.info = info;
 		this.logo = logo;
 		this.user = user;
+		this.name = name;
 	}
 	
 	public Long getOrganizationId(){
@@ -143,5 +147,13 @@ public class Organization implements Serializable{
 	
 	public void setUser(User user){
 		this.user = user;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String name){
+		this.name = name;
 	}
 }

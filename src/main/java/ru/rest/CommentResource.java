@@ -1,6 +1,7 @@
 package ru.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -21,8 +22,8 @@ public class CommentResource{
 	private CommentService commentService;
 	
 	@GET
-	@Path("comment")
-	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Path("comments")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	public Response getAllComments(){
 		JsonComments jComments = CommentToJsonConverter.convertEntityListToJsonList(commentService.findAll());
 		return Response.ok(jComments).build();
