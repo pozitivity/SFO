@@ -2,20 +2,21 @@ package ru.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;;
 
 @Entity
 @Table(name = "rubric")
 public class Rubric implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "rubric_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,7 @@ public class Rubric implements Serializable {
 	private String rubricName;
 	
 	
-	@Column(name = "main_id")
+	@Column(name = "main_rubric_id")
 	private Long mainRubricId;
 	
 	public Rubric(){

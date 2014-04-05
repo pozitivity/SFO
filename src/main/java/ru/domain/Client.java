@@ -10,18 +10,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
 public class Client implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "client_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
 	private Long clientId;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
@@ -32,19 +37,20 @@ public class Client implements Serializable{
 	private String lastname;
 	
 	@OneToOne
-	@JoinColumn(name = "photo_id")
-	private PhotoClient photoClient;
+	//@JoinColumn(name = "photo_id")
+	@PrimaryKeyJoinColumn
+	private Photo photo;
 	
 	public Client(){
 		
 	}
 	
-	public Client(Long clientId, User user, String firstname, String lastname, PhotoClient photoClient){
+	public Client(Long clientId, User user, String firstname, String lastname, Photo photo){
 		this.clientId = clientId;
 		this.user = user;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.photoClient = photoClient;
+		this.photo = photo;
 	}
 	
 	public Long getClientId(){
@@ -77,12 +83,11 @@ public class Client implements Serializable{
 		this.lastname = lastname;
 	}
 
-	public PhotoClient getPhotoClient() {
-		return photoClient;
+	public Photo getPhoto() {
+		return photo;
 	}
 
-	public void setPhotoClient(PhotoClient photoClient) {
-		this.photoClient = photoClient;
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
 	}
-
 }

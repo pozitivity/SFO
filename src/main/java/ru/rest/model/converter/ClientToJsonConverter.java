@@ -12,7 +12,7 @@ public class ClientToJsonConverter {
 		jClient.setClientId(sClient.getClientId());
 		jClient.setFirstName(sClient.getFirstname());
 		jClient.setLastName(sClient.getLastname());
-		jClient.setPhoto(sClient.getPhotoClient() == null ? null : PhotoClientToJsonConverter.convertEntityToJson(sClient.getPhotoClient()));
+		jClient.setPhoto(sClient.getPhoto() == null ? null : PhotoToJsonConverter.convertEntityToJson(sClient.getPhoto()));
 		jClient.setUser(sClient.getUser() == null ? null : UserToJsonConverter.convertEntityToJson(sClient.getUser()));
 		return jClient;
 	}
@@ -21,7 +21,7 @@ public class ClientToJsonConverter {
 		sClient.setClientId(jClient.getClientId());
 		sClient.setFirstname(jClient.getFirstName());
 		sClient.setLastname(jClient.getLastName());
-		sClient.setPhotoClient(jClient.getPhoto() == null ? null : PhotoClientToJsonConverter.convertJsonToEntity(jClient.getPhoto()));
+		sClient.setPhoto(jClient.getPhoto() == null ? null : PhotoToJsonConverter.convertJsonToEntity(jClient.getPhoto()));
 		sClient.setUser(jClient.getUser() == null ? null : UserToJsonConverter.convertJsonToEntity(jClient.getUser()));
 		return sClient;
 	}

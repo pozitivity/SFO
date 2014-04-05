@@ -16,6 +16,11 @@ import javax.persistence.JoinColumn;
 @Table(name = "comment")
 public class Comment implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "comment_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,23 +30,21 @@ public class Comment implements Serializable{
 	private String comment;
 	
 	@ManyToOne
-	@JoinColumn(name = "organization_id")
-	private Organization organization ;
-	
-	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;
+	
+	@ManyToOne
+	@JoinColumn(name = "organization_id")
+	private Organization organization ;
 	
 	public Comment(){
 		
 	}
 	
-	public Comment(Long commentId, String comment, Organization organization, Client client){
+	public Comment(Long commentId, String comment, Organization organization){
 		this.commentId = commentId;
 		this.comment = comment;
 		this.organization = organization;
-		this.client = client;
-		
 	}
 	
 	public Long getCommentId(){
@@ -67,12 +70,12 @@ public class Comment implements Serializable{
 	public void setOrganization(Organization organization){
 		this.organization = organization;
 	}
-	
-	public Client getClient(){
+
+	public Client getClient() {
 		return client;
 	}
-	
-	public void setClient(Client client){
+
+	public void setClient(Client client) {
 		this.client = client;
 	}
 

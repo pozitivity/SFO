@@ -2,10 +2,8 @@ package ru.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,23 +11,26 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 import ru.domain.Rubric;
-import ru.domain.InfoOrganization;
+import ru.domain.Info;
 import ru.domain.Logo;
 
 @Entity
 @Table(name = "organization")
 public class Organization implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "organization_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@OneToMany(mappedBy = "organization", fetch = FetchType.EAGER)
 	private Long organizationId;
 	
-	@Column(name = "street")
-	private String street;
+	@Column(name = "address")
+	private String address;
 	
 	@ManyToOne
 	@JoinColumn(name = "rubric_id")
@@ -46,7 +47,7 @@ public class Organization implements Serializable{
 	
 	@OneToOne
 	@JoinColumn(name = "info_id")
-	private InfoOrganization info;
+	private Info info;
 	
 	@OneToOne
 	@JoinColumn(name = "logo_id")
@@ -63,10 +64,10 @@ public class Organization implements Serializable{
 		
 	}
 	
-	public Organization(Long organizationId, String street, Rubric rubric, String postcode, String website, 
-			String phone, InfoOrganization info, Logo logo, User user,String name){
+	public Organization(Long organizationId, String address, Rubric rubric, String postcode, String website, 
+			String phone, Info info, Logo logo, User user,String name){
 		this.organizationId = organizationId;
-		this.street = street;
+		this.address = address;
 		this.rubric = rubric;
 		this.postcode = postcode;
 		this.website = website;
@@ -85,12 +86,12 @@ public class Organization implements Serializable{
 		this.organizationId = organizationId;
 	}
 	
-	public String getStreet(){
-		return street;
+	public String getAddress(){
+		return address;
 	}
 	
-	public void setStreet(String street){
-		this.street = street;
+	public void setAddress(String address){
+		this.address = address;
 	}
 
 	public Rubric getRubric(){
@@ -125,11 +126,11 @@ public class Organization implements Serializable{
 		this.phone = phone;
 	}
 	
-	public InfoOrganization getInfo(){
+	public Info getInfo(){
 		return info;
 	}
 	
-	public void setInfo(InfoOrganization info){
+	public void setInfo(Info info){
 		this.info = info;
 	}
 	

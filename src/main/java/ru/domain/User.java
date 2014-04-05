@@ -13,8 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 
 import ru.domain.City;
 import ru.domain.TypeUser;
@@ -24,10 +22,14 @@ import ru.domain.TypeUser;
 @Table(name = "user")
 public class User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@OneToMany(mappedBy = "users", fetch = FetchType.EAGER)
 	private Long userId;
 	
 	@Column(name = "login")
@@ -43,10 +45,14 @@ public class User implements Serializable{
 	@JoinColumn(name = "city_id")
 	private City city;
 	
-	@ManyToOne
+	@OneToOne(optional = false, mappedBy = "user", fetch = FetchType.EAGER, 
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+	private Client contact; 
+	
+	@OneToOne
 	@JoinColumn(name = "type_user_id")
 	private TypeUser typeUser;
-	
+
 	@OneToOne(optional = false, mappedBy = "user", fetch = FetchType.EAGER, 
 	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
 	private Organization contacts;
@@ -121,6 +127,14 @@ public class User implements Serializable{
 	
 	public void setContacts(Organization contacts){
 		this.contacts  = contacts;
+	}
+	
+	public Client getContact() {
+		return contact;
+	}
+
+	public void setContact(Client contact) {
+		this.contact = contact;
 	}
 
 }

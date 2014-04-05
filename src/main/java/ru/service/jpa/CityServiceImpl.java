@@ -30,6 +30,14 @@ public class CityServiceImpl implements CityService{
 	public List<City> findAll(){
 		return (List<City>) cityRepository.findAll();
 	}
-	
-	
+
+	@Override
+	public City save(City city) {
+		return cityRepository.save(city);
+	}
+
+	@Override
+	public void delete(City city ) {
+		cityRepository.delete(city);
+	}
 }

@@ -7,4 +7,6 @@ import ru.domain.City;
 public interface CityService {
 	public City findOne(Long cityId);
 	public List<City> findAll();
+	public City save(City city);
+	public void delete(City city);
 }

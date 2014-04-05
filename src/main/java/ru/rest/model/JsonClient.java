@@ -2,8 +2,6 @@ package ru.rest.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import ru.domain.PhotoClient;
-
 @XmlRootElement(name = "client")
 public class JsonClient {
 
@@ -15,7 +13,7 @@ public class JsonClient {
 	
 	private String lastName;
 	
-	private JsonPhotoClient photo;
+	private JsonPhoto photo;
 	
 	public Long getClientId(){
 		return clientId;
@@ -49,11 +47,11 @@ public class JsonClient {
 		this.lastName = lastName;
 	}
 	
-	public JsonPhotoClient getPhoto(){
+	public JsonPhoto getPhoto(){
 		return photo;
 	}
 	
-	public void setPhoto(JsonPhotoClient photo){
+	public void setPhoto(JsonPhoto photo){
 		this.photo = photo;
 	}
 }

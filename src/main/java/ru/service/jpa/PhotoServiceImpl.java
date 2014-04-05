@@ -7,24 +7,24 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ru.domain.PhotoClient;
-import ru.repository.PhotoClientRepository;
-import ru.service.PhotoClientService;
+import ru.domain.Photo;
+import ru.repository.PhotoRepository;
+import ru.service.PhotoService;
 
-@Service("photoclientService")
+@Service("photoService")
 @Repository
 @Transactional
-public class PhotoClientServiceImpl implements PhotoClientService{
+public class PhotoServiceImpl implements PhotoService{
 	@Autowired
-	private PhotoClientRepository photoRepository;
+	private PhotoRepository photoRepository;
 	
 	@Transactional(readOnly = true)
-	public PhotoClient findOne(Long photoId){
+	public Photo findOne(Long photoId){
 		return photoRepository.findOne(photoId);
 	}
 	
 	@Transactional(readOnly = true)
-	public List<PhotoClient> findAll(){
-		return (List<PhotoClient>)photoRepository.findAll();
+	public List<Photo> findAll(){
+		return (List<Photo>)photoRepository.findAll();
 	}
 }

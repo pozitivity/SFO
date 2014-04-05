@@ -2,8 +2,8 @@ package ru.rest.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "info_organization")
-public class JsonInfoOrganization {
+@XmlRootElement(name = "info")
+public class JsonInfo {
 
 	private Long infoId;
 	

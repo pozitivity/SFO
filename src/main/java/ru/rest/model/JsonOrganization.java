@@ -8,7 +8,7 @@ public class JsonOrganization {
 
 	private Long organizationId;
 	
-	private String street;
+	private String address;
 	
 	private JsonRubric rubric;
 	
@@ -18,7 +18,7 @@ public class JsonOrganization {
 	
 	private String phone;
 	
-	private JsonInfoOrganization info;
+	private JsonInfo info;
 	
 	private JsonLogo logo;
 	
@@ -30,10 +30,10 @@ public class JsonOrganization {
 		
 	}
 	
-	public JsonOrganization(Long organizationId, String street, String postcode, String website, String phone, 
-			JsonRubric rubric, JsonInfoOrganization info, JsonLogo logo, JsonUser user){
+	public JsonOrganization(Long organizationId, String address, String postcode, String website, String phone, 
+			JsonRubric rubric, JsonInfo info, JsonLogo logo, JsonUser user){
 		this.organizationId = organizationId;
-		this.street = street;
+		this.address = address;
 		this.postcode = postcode;
 		this.website  = website;
 		this.phone = phone;
@@ -51,12 +51,12 @@ public class JsonOrganization {
 		this.organizationId = organizationId;
 	}
 	
-	public String getStreet(){
-		return street;
+	public String getAddress(){
+		return address;
 	}
 	
-	public void setStreet(String street){
-		this.street = street;
+	public void setAddress(String address){
+		this.address = address;
 	}
 	
 	public String getPostcode(){
@@ -91,11 +91,11 @@ public class JsonOrganization {
 		this.rubric = rubric;
 	}
 	
-	public JsonInfoOrganization getInfo(){
+	public JsonInfo getInfo(){
 		return info;
 	}
 	
-	public void setInfo(JsonInfoOrganization info){
+	public void setInfo(JsonInfo info){
 		this.info = info;
 	}
 	

@@ -10,22 +10,23 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ru.rest.model.JsonInfoOrganizations;
-import ru.rest.model.converter.InfoOrganizationToJsonConverter;
-import ru.service.InfoOrganizationService;
+
+import ru.rest.model.JsonInfos;
+import ru.rest.model.converter.InfoToJsonConverter;
+import ru.service.InfoService;
 
 
 @Component
 @Path("/infoService")
-public class InfoOrganizationResource{
+public class InfoResource{
 	@Autowired
-	private InfoOrganizationService infoOrganizationService;
+	private InfoService infoService;
 	
 	@GET
 	@Path("infos")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	public Response getAllInfoOrganizations(){
-		JsonInfoOrganizations jInfoOrganizations = InfoOrganizationToJsonConverter.convertEntityListToJsonList(infoOrganizationService.findAll());
-		return Response.ok(jInfoOrganizations).build();
+		JsonInfos jInfos = InfoToJsonConverter.convertEntityListToJsonList(infoService.findAll());
+		return Response.ok(jInfos).build();
 	}
 }

@@ -8,11 +8,11 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>ru.domain.City</class>
         <class>ru.domain.Client</class>  
-        <class>ru.domain.Comment</class>  
-        <class>ru.domain.InfoOrganization</class>
+        <class>ru.domain.Comment</class>
+        <class>ru.domain.Info</class>
         <class>ru.domain.Logo</class>
         <class>ru.domain.Organization</class>
-        <class>ru.domain.PhotoClient</class>
+        <class>ru.domain.Photo</class>
         <class>ru.domain.Rubric</class>
         <class>ru.domain.TypeUser</class>
         <class>ru.domain.User</class>

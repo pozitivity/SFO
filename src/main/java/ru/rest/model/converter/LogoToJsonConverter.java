@@ -12,6 +12,7 @@ public class LogoToJsonConverter {
 	public static JsonLogo convertEntityToJson(Logo sLogo) {
 		JsonLogo jLogo = new JsonLogo();
 		jLogo.setLogoId(sLogo.getLogoId());
+		jLogo.setLogoName(sLogo.getLogoName());
 		jLogo.setLogo(sLogo.getLogo());
 		
 		return jLogo;
@@ -19,6 +20,7 @@ public class LogoToJsonConverter {
 	
 	public static Logo convertJsonToEntity(JsonLogo jLogo, Logo sLogo){
 		sLogo.setLogoId(jLogo.getLogoId());
+		sLogo.setLogoName(jLogo.getLogoName());
 		sLogo.setLogo(jLogo.getLogo());
 		return sLogo;
 	}

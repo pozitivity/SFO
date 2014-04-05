@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import ru.domain.InfoOrganization;
+import ru.domain.Info;
 import ru.domain.Logo;
 import ru.domain.Organization;
 import ru.domain.Rubric;
@@ -35,7 +35,12 @@ public class OrganizationServiceImpl implements OrganizationService{
 	
 	@Override
 	public List<Organization> findByUserAndLogoAndRubricAndInfoOrganization(User user,Logo logo, Rubric rubric,
-			InfoOrganization infoOrganization){
-		return organizationRepository.findByUserAndLogoAndRubricAndInfoOrganization(user, logo, rubric, infoOrganization);
+			Info info){
+		return organizationRepository.findByUserAndLogoAndRubricAndInfoOrganization(user, logo, rubric, info);
+	}
+
+	@Override
+	public Organization save(Organization organization) {
+		return organizationRepository.save(organization);
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ru.domain.Client;
-import ru.domain.PhotoClient;
+import ru.domain.Photo;
 import ru.domain.User;
 import ru.repository.ClientRepository;
 import ru.service.ClientService;
@@ -34,7 +34,18 @@ public class ClientServiceImpl implements ClientService{
 	}
 	
 	@Override
-	public List<Client> findByUserAndPhotoClient(User user, PhotoClient photo){
+	public List<Client> findByUserAndPhotoClient(User user, Photo photo){
 		return clientRepository.findByUserAndPhotoClient(user, photo);
+	}
+
+	@Override
+	public Client save(Client client) {
+		return clientRepository.save(client);
+	}
+
+	@Override
+	public void delete(Client client) {
+		clientRepository.delete(client);
+		
 	}
 }

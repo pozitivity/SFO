@@ -48,21 +48,22 @@ public class JsonUser {
 	public void setBlocked(Boolean blocked){
 		this.blocked = blocked;
 	}
-	
-	public JsonCity getCity(){
+
+	public JsonCity getCity() {
 		return city;
 	}
-	
-	public void setCity(JsonCity city){
+
+	public void setCity(JsonCity city) {
 		this.city = city;
 	}
-	
-	public JsonTypeUser getTypeUser(){
+
+	public JsonTypeUser getTypeUser() {
 		return typeUser;
 	}
-	
-	public void setTypeUser(JsonTypeUser typeUser){
+
+	public void setTypeUser(JsonTypeUser typeUser) {
 		this.typeUser = typeUser;
 	}
+	
 }
 

@@ -13,8 +13,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "info_organization")
-public class InfoOrganization implements Serializable {
+@Table(name = "info")
+public class Info implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "info_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +32,11 @@ public class InfoOrganization implements Serializable {
 	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
 	private Organization organization;
 	
-	public InfoOrganization() {
+	public Info() {
 		
 	}
 	
-	public InfoOrganization(Long infoId, String info){
+	public Info(Long infoId, String info){
 		this.infoId = infoId;
 		this.info = info;
 		
@@ -61,4 +66,3 @@ public class InfoOrganization implements Serializable {
 		this.organization = contacts;
 	}
 }
-

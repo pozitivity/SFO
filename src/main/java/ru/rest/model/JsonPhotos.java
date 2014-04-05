@@ -8,29 +8,29 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "photo_clients")
+@XmlRootElement(name = "photos")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class JsonPhotoClients {
-	@XmlElement(name = "photo_client")
-	private List<JsonPhotoClient> photos = new ArrayList<JsonPhotoClient>();
+public class JsonPhotos {
+	@XmlElement(name = "photo")
+	private List<JsonPhoto> photos = new ArrayList<JsonPhoto>();
 	
-	public JsonPhotoClients(){
+	public JsonPhotos(){
 		
 	}
 	
-	public JsonPhotoClients(List<JsonPhotoClient> photos){
+	public JsonPhotos(List<JsonPhoto> photos){
 		this.photos = photos;
 	}
 	
-	public List<JsonPhotoClient> getPhotos(){
+	public List<JsonPhoto> getPhotos(){
 		return photos;
 	}
 	
-	public void setPhotos(List<JsonPhotoClient> photos){
+	public void setPhotos(List<JsonPhoto> photos){
 		this.photos = photos;
 	}
 	
-	public void add(JsonPhotoClient photo){
+	public void add(JsonPhoto photo){
 		this.photos.add(photo);
 	}
 	

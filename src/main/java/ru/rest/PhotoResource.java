@@ -10,22 +10,22 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ru.rest.model.JsonPhotoClients;
-import ru.rest.model.converter.PhotoClientToJsonConverter;
-import ru.service.PhotoClientService;
+import ru.rest.model.JsonPhotos;
+import ru.rest.model.converter.PhotoToJsonConverter;
+import ru.service.PhotoService;
 
 
 @Component
 @Path("/photoService")
-public class PhotoClientResource{
+public class PhotoResource{
 	@Autowired
-	private PhotoClientService photoClientService;
+	private PhotoService photoService;
 	
 	@GET
 	@Path("photos")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response getAllPhotoClients(){
-		JsonPhotoClients jPhotoClients = PhotoClientToJsonConverter.convertEntityListToJsonList(photoClientService.findAll());
-		return Response.ok(jPhotoClients).build();
+	public Response getAllPhotos(){
+		JsonPhotos jPhotos = PhotoToJsonConverter.convertEntityListToJsonList(photoService.findAll());
+		return Response.ok(jPhotos).build();
 	}
 }
