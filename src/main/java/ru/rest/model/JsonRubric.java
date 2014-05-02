@@ -7,7 +7,7 @@ public class JsonRubric {
 
 	private Long rubricId;
 	
-	private String rubricName;
+	private String name;
 	
 	private Long mainRubricId;
 	
@@ -19,12 +19,12 @@ public class JsonRubric {
 		this.rubricId = rubricId;
 	}
 	
-	public String getRubricName(){
-		return rubricName;
+	public String getName(){
+		return name;
 	}
 	
-	public void setRubricName(String rubricName){
-		this.rubricName = rubricName;
+	public void setName(String name){
+		this.name = name;
 	}
 	
 	public Long getMainRubricId(){

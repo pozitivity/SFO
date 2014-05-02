@@ -11,8 +11,6 @@ public class JsonComment {
 	
 	private JsonOrganization organization;
 	
-	private JsonClient client;
-	
 	public Long getCommentId(){
 		return commentId;
 	}
@@ -35,14 +33,6 @@ public class JsonComment {
 	
 	public void setOrganization(JsonOrganization organization){
 		this.organization = organization;
-	}
-	
-	public JsonClient getClient(){
-		return client;
-	}
-	
-	public void setClient(JsonClient client){
-		this.client = client;
 	}
 
 }

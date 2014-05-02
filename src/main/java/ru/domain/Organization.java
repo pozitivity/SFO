@@ -53,7 +53,7 @@ public class Organization implements Serializable{
 	@JoinColumn(name = "logo_id")
 	private Logo logo;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	

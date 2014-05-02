@@ -30,10 +30,6 @@ public class Comment implements Serializable{
 	private String comment;
 	
 	@ManyToOne
-	@JoinColumn(name = "client_id")
-	private Client client;
-	
-	@ManyToOne
 	@JoinColumn(name = "organization_id")
 	private Organization organization ;
 	
@@ -69,14 +65,6 @@ public class Comment implements Serializable{
 	
 	public void setOrganization(Organization organization){
 		this.organization = organization;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
 	}
 
 }

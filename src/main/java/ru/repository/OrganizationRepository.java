@@ -12,5 +12,5 @@ import ru.domain.Rubric;
 
 public interface OrganizationRepository extends PagingAndSortingRepository<Organization, Long>{
 	public List<Organization> findByUserAndLogoAndRubricAndInfoOrganization(User user, Logo logo, Rubric rubric, Info infoOrganization);
-
+	public List<Organization> findByRubric(Rubric rubric);
 }

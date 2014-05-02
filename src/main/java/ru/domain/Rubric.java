@@ -22,8 +22,8 @@ public class Rubric implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long rubricId;
 	
-	@Column(name = "rubric_name")
-	private String rubricName;
+	@Column(name = "name")
+	private String name;
 	
 	
 	@Column(name = "main_rubric_id")
@@ -33,9 +33,9 @@ public class Rubric implements Serializable {
 		
 	}
 	
-	public Rubric(Long rubricId,Long mainRubricId, String rubricName){
+	public Rubric(Long rubricId,Long mainRubricId, String name){
 		this.mainRubricId = mainRubricId;
-		this.rubricName = rubricName;
+		this.name = name;
 		this.rubricId = rubricId;
 		
 	}
@@ -48,12 +48,12 @@ public class Rubric implements Serializable {
 		this.rubricId = rubricId;
 	}
 	
-	public String getRubricName(){
-		return rubricName;
+	public String getName(){
+		return name;
 	}
 	
-	public void setRubricName(String rubricName){
-		this.rubricName = rubricName;
+	public void setName(String name){
+		this.name = name;
 	}
 	
 	public Long getMainRubricId(){

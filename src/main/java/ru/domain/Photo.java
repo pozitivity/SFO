@@ -33,10 +33,6 @@ public class Photo implements Serializable {
 	
 	@Column(name = "photo_name")
 	private String photoName;
-	
-	@OneToOne(optional = false, mappedBy = "photo", fetch = FetchType.EAGER, 
-	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-	private Client client;
 
 	public Photo(){
 		
@@ -72,12 +68,5 @@ public class Photo implements Serializable {
 		this.photoId = photoId;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
 	
 }

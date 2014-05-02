@@ -34,4 +34,5 @@ public class JsonRubrics {
 	public void add(JsonRubric rubric){
 		this.rubrics.add(rubric);
 	}
+
 }

@@ -69,6 +69,7 @@ public class CityResource{
 	public Response deleteCity(@QueryParam("cityId") Long cityId){
 		City sCity = new City();
 		sCity.setCityId(cityId);
+		sCity.getCityName();
 		if(sCity != null){
 			JsonCity jCity = CityToJsonConverter.convertEntityToJson(sCity);
 			cityService.delete(sCity);
@@ -82,12 +83,12 @@ public class CityResource{
 	@Path("/updateCity")
 	@Produces({MediaType.APPLICATION_JSON + ";chraset=utf-8"})
 	@Consumes({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response updateCity(@QueryParam("cityId") Long cityId, @QueryParam("cityName") String cityName){
-		City sCity = new City();
+	public Response updateCity(@QueryParam("cityId") Long cityId, @QueryParam("cityName") String cityName, City sCity){
+		//City sCity = new City();
 		sCity.setCityName(cityName);
 		sCity.setCityId(cityId);
 		if(sCity != null){
-			JsonCity jCity = CityToJsonConverter.convertEntityToJson(cityService.save(sCity));
+			JsonCity jCity = CityToJsonConverter.convertEntityToJson(cityService.update(sCity));
 			return Response.status(200).entity(jCity).build();
 		} else
 			return Response.status(404).entity("Failure update city").build();

@@ -20,12 +20,17 @@ public class RubricServiceImpl implements RubricService{
 	private RubricRepository rubricRepository;
 	
 	@Transactional(readOnly = true)
-	public Rubric findOne(Long rubricId){
-		return rubricRepository.findOne(rubricId);
-	}
-	
-	@Transactional(readOnly = true)
 	public List<Rubric>findAll(){
 		return (List<Rubric>)rubricRepository.findAll();
+	}
+
+	@Override
+	public Rubric findOne(Long rubricId) {
+		return rubricRepository.findOne(rubricId);
+	}
+
+	@Override
+	public List<Rubric> findByMainRubricId(Long id) {
+		return (List<Rubric>)rubricRepository.findByMainRubricId(id);
 	}
 }

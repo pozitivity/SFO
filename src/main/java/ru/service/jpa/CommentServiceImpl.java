@@ -6,7 +6,6 @@ import ru.repository.CommentRepository;
 import ru.service.CommentService;
 import ru.domain.Comment;
 import ru.domain.Organization;
-import ru.domain.Client;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class CommentServiceImpl implements CommentService{
 	}
 	
 	@Override
-	public List<Comment> findByOrganizationAndClient(Organization organization, Client client){
-		return commentRepository.findByOrganizationAndClient(organization, client);
+	public List<Comment> findByOrganization(Organization organization){
+		return commentRepository.findByOrganization(organization);
 	}
 }

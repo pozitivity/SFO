@@ -13,7 +13,7 @@ public class RubricToJsonConverter {
 	public static JsonRubric convertEntityToJson(Rubric sRubric) {
 		JsonRubric jRubric = new JsonRubric();
 		jRubric.setRubricId(sRubric.getRubricId());;
-		jRubric.setRubricName(sRubric.getRubricName());
+		jRubric.setName(sRubric.getName());
 		jRubric.setMainRubricId(sRubric.getMainRubricId());
 		
 		return jRubric;
@@ -21,7 +21,7 @@ public class RubricToJsonConverter {
 	
 	public static Rubric convertJsonToEntity(JsonRubric jRubric, Rubric sRubric){
 		sRubric.setRubricId(jRubric.getRubricId());
-		sRubric.setRubricName(jRubric.getRubricName());
+		sRubric.setName(jRubric.getName());
 		sRubric.setMainRubricId(jRubric.getMainRubricId());
 		return sRubric;
 	}

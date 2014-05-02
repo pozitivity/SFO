@@ -13,4 +13,5 @@ public interface OrganizationService {
 	public List<Organization> findAll();
 	public List<Organization> findByUserAndLogoAndRubricAndInfoOrganization(User user, Logo logo, Rubric rubric, Info info);
 	public Organization save(Organization organization);
+	public List<Organization> findByRubric(Rubric rubric);
 }

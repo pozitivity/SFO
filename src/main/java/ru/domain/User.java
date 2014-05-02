@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Entity;
@@ -45,17 +46,10 @@ public class User implements Serializable{
 	@JoinColumn(name = "city_id")
 	private City city;
 	
-	@OneToOne(optional = false, mappedBy = "user", fetch = FetchType.EAGER, 
-			cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-	private Client contact; 
-	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "type_user_id")
 	private TypeUser typeUser;
 
-	@OneToOne(optional = false, mappedBy = "user", fetch = FetchType.EAGER, 
-	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-	private Organization contacts;
 	
 	public User(){
 		
@@ -119,22 +113,6 @@ public class User implements Serializable{
 	
 	public void setTypeUser(TypeUser typeUser){
 		this.typeUser = typeUser;
-	}
-	
-	public Organization getContacts(){
-		return contacts;
-	}
-	
-	public void setContacts(Organization contacts){
-		this.contacts  = contacts;
-	}
-	
-	public Client getContact() {
-		return contact;
-	}
-
-	public void setContact(Client contact) {
-		this.contact = contact;
 	}
 
 }

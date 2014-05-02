@@ -29,9 +29,6 @@ public class TypeUser implements Serializable{
 	@Column(name = "type_user")
 	private String typeUser;
 	
-	@OneToOne(optional = false, mappedBy = "typeUser", fetch = FetchType.EAGER, 
-			cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-	private User contacts;
 	
 	public TypeUser(){
 		
@@ -57,14 +54,6 @@ public class TypeUser implements Serializable{
 	
 	public void setTypeUser(String typeUser){
 		this.typeUser = typeUser;
-	}
-
-	public User getContacts() {
-		return contacts;
-	}
-
-	public void setContacts(User contacts) {
-		this.contacts = contacts;
 	}
 }
 

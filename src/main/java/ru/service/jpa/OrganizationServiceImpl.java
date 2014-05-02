@@ -43,4 +43,9 @@ public class OrganizationServiceImpl implements OrganizationService{
 	public Organization save(Organization organization) {
 		return organizationRepository.save(organization);
 	}
+
+	@Override
+	public List<Organization> findByRubric(Rubric rubric) {
+		return (List<Organization>)organizationRepository.findByRubric(rubric);
+	}
 }
