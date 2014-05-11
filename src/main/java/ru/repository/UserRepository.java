@@ -9,4 +9,5 @@ import ru.domain.User;
 
 public interface UserRepository extends PagingAndSortingRepository<User,Long>{
 	public List<User> findByCityAndTypeUser(City city, TypeUser typeUser);
+	public User findByLogin(String login);
 }

@@ -13,20 +13,22 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Scope;
 
+import ru.daoservice.CityDao;
 import ru.domain.City;
 import ru.rest.model.JsonCities;
 import ru.rest.model.JsonCity;
 import ru.rest.model.JsonLogo;
 import ru.rest.model.converter.CityToJsonConverter;
 import ru.rest.model.converter.LogoToJsonConverter;
-import ru.service.CityService;
 
 @Component
-@Path("/cityService")
+@Scope("request")
+@Path("/cityDaoService")
 public class CityResource{
 	@Autowired
-	private CityService cityService;
+	private CityDao cityService;
 	
 	@GET
 	@Path("/cities")

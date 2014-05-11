@@ -1,4 +1,4 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import java.util.List;
 
@@ -7,14 +7,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.daoservice.RubricDao;
 import ru.domain.Rubric;
 import ru.repository.RubricRepository;
-import ru.service.RubricService;
 
 @Service("rubricService")
 @Repository
 @Transactional
-public class RubricServiceImpl implements RubricService{
+public class RubricDaoImpl implements RubricDao{
 
 	@Autowired
 	private RubricRepository rubricRepository;

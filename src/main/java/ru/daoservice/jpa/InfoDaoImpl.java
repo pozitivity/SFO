@@ -1,4 +1,4 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import java.util.List;
 
@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import ru.daoservice.InfoDao;
 import ru.domain.Info;
 import ru.repository.InfoRepository;
-import ru.service.InfoService;
 
 @Service("infoService")
 @Repository
 @Transactional
-public class InfoServiceImpl implements InfoService{
+public class InfoDaoImpl implements InfoDao{
 
 	@Autowired
 	private InfoRepository infoRepository;

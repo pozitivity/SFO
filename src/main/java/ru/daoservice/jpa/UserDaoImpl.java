@@ -1,4 +1,4 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import java.util.List;
 
@@ -7,16 +7,16 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
+import ru.daoservice.UserDao;
 import ru.domain.City;
 import ru.domain.TypeUser;
 import ru.domain.User;
 import ru.repository.UserRepository;
-import ru.service.UserService;
 
 @Service("userService")
 @Repository
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserDaoImpl implements UserDao{
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -33,5 +33,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<User>findByCityAndTypeUser(City city, TypeUser typeUser){
 		return userRepository.findByCityAndTypeUser(city, typeUser);
+	}
+
+	@Override
+	public User findByLogin(String login) {
+		return userRepository.findByLogin(login);
 	}
 }

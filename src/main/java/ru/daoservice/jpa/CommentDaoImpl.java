@@ -1,11 +1,12 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import java.util.List;
 
 import ru.repository.CommentRepository;
-import ru.service.CommentService;
+import ru.daoservice.CommentDao;
 import ru.domain.Comment;
 import ru.domain.Organization;
+
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("commentService")
 @Repository
 @Transactional
-public class CommentServiceImpl implements CommentService{
+public class CommentDaoImpl implements CommentDao{
 
 	@Autowired
 	private CommentRepository commentRepository;

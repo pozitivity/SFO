@@ -1,10 +1,10 @@
-package ru.service;
+package ru.daoservice;
 
 import java.util.List;
 
 import ru.domain.City;
 
-public interface CityService {
+public interface CityDao {
 	public City findOne(Long cityId);
 	public List<City> findAll();
 	public City save(City city);

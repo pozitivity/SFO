@@ -1,7 +1,6 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import java.util.List;
-
 import java.io.File;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +8,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.daoservice.LogoDao;
 import ru.domain.Logo;
 import ru.repository.LogoRepository;
-import ru.service.LogoService;
 
 @Service("logoService")
 @Repository
 @Transactional
-public class LogoServiceImpl implements LogoService{
+public class LogoDaoImpl implements LogoDao{
 	@Autowired
 	private LogoRepository logoRepository;
 	

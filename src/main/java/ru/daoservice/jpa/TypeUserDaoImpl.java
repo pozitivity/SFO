@@ -1,4 +1,4 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import java.util.List;
 
@@ -7,14 +7,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.daoservice.TypeUserDao;
 import ru.domain.TypeUser;
 import ru.repository.TypeUserRepository;
-import ru.service.TypeUserService;
 
 @Service("typeuserService")
 @Repository
 @Transactional
-public class TypeUserServiceImpl implements TypeUserService{
+public class TypeUserDaoImpl implements TypeUserDao{
 	@Autowired
 	private TypeUserRepository typeUserRepository;
 	

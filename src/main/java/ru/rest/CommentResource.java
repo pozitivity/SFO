@@ -8,18 +8,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import ru.daoservice.CommentDao;
 import ru.rest.model.JsonComments;
 import ru.rest.model.converter.CommentToJsonConverter;
-import ru.service.CommentService;
 
 
 @Component
 @Path("/commentService")
+@Scope("request")
 public class CommentResource{
 	@Autowired
-	private CommentService commentService;
+	private CommentDao commentService;
 	
 	@GET
 	@Path("comments")

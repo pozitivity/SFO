@@ -8,18 +8,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import ru.daoservice.PhotoDao;
 import ru.rest.model.JsonPhotos;
 import ru.rest.model.converter.PhotoToJsonConverter;
-import ru.service.PhotoService;
 
 
 @Component
 @Path("/photoService")
+@Scope("request")
 public class PhotoResource{
 	@Autowired
-	private PhotoService photoService;
+	private PhotoDao photoService;
 	
 	@GET
 	@Path("photos")

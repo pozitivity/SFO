@@ -1,4 +1,4 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import java.util.List;
 
@@ -7,14 +7,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.daoservice.PhotoDao;
 import ru.domain.Photo;
 import ru.repository.PhotoRepository;
-import ru.service.PhotoService;
 
 @Service("photoService")
 @Repository
 @Transactional
-public class PhotoServiceImpl implements PhotoService{
+public class PhotoDaoImpl implements PhotoDao{
 	@Autowired
 	private PhotoRepository photoRepository;
 	

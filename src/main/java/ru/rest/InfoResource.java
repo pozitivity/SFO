@@ -8,19 +8,23 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 
+
+
+import ru.daoservice.InfoDao;
 import ru.rest.model.JsonInfos;
 import ru.rest.model.converter.InfoToJsonConverter;
-import ru.service.InfoService;
 
 
 @Component
 @Path("/infoService")
+@Scope("request")
 public class InfoResource{
 	@Autowired
-	private InfoService infoService;
+	private InfoDao infoService;
 	
 	@GET
 	@Path("infos")

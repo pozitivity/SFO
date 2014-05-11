@@ -11,20 +11,22 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import ru.daoservice.RubricDao;
 import ru.domain.Rubric;
 import ru.rest.model.JsonRubric;
 import ru.rest.model.JsonRubrics;
 import ru.rest.model.converter.RubricToJsonConverter;
-import ru.service.RubricService;
 
 
 @Component
 @Path("/rubricService")
+@Scope("request")
 public class RubricResource{
 	@Autowired
-	private RubricService rubricService;
+	private RubricDao rubricService;
 	
 	@GET
 	@Path("rubrics")

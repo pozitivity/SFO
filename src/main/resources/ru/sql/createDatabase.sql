@@ -1,5 +1,5 @@
 CREATE DATABASE sfo;
-USE application;
+USE sfo;
 CREATE TABLE IF NOT EXISTS type_user(
 	type_user_id serial,
 	type_user varchar(50) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS logo(
 );
 CREATE TABLE IF NOT EXISTS rubric(
 	rubric_id serial,
-	rubric_name varchar(100) NOT NULL,
+	name varchar(100) NOT NULL,
 	main_rubric_id bigint unsigned,
 	PRIMARY KEY(rubric_id)
 );
@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS organization(
 	info_id bigint unsigned,
 	logo_id bigint unsigned,
 	user_id bigint unsigned NOT NULL,
+	city_id bigint unsigned NOT NULL,
 	website varchar(100) NOT NULL,
 	postcode varchar(100) NOT NULL,
 	name varchar(100) NOT NULL,
@@ -63,10 +64,21 @@ CREATE TABLE IF NOT EXISTS comment(
 	organization_id bigint unsigned NOT NULL,
 	PRIMARY KEY(comment_id)
 );
+CREATE TABLE IF NOT EXISTS logevents(
+	id serial,
+	category VARCHAR(64) NOT NULL,
+	action_name VARCHAR(256),
+	severity VARCHAR(16) NOT NULL,
+	when_date DATETIME NOT NULL,
+	message VARCHAR(1024),
+	extra MEDIUMTEXT,
+	PRIMARY KEY (id)
+);
 ALTER TABLE organization ADD FOREIGN KEY(rubric_id) REFERENCES rubric(rubric_id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE organization ADD FOREIGN KEY(info_id) REFERENCES info(info_id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE organization ADD FOREIGN KEY(logo_id) REFERENCES logo(logo_id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE organization ADD FOREIGN KEY(user_id) REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE organization ADD FOREIGN KEY(city_id) REFERENCES city(city_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE user ADD FOREIGN KEY(city_id) REFERENCES city(city_id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE user ADD FOREIGN KEY(type_user_id) REFERENCES type_user(type_user_id) ON DELETE CASCADE ON UPDATE CASCADE;

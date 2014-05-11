@@ -1,22 +1,22 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.daoservice.CityDao;
 import ru.domain.City;
 import ru.repository.CityRepository;
-import ru.service.CityService;
 
 import java.util.List;
 
 
 
-@Service("cityService")
+@Service("cityDaoService")
 @Repository
 @Transactional
-public class CityServiceImpl implements CityService{
+public class CityDaoImpl implements CityDao {
 
 	@Autowired
 	private CityRepository cityRepository;

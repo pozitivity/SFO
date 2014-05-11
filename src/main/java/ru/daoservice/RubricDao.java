@@ -1,10 +1,10 @@
-package ru.service;
+package ru.daoservice;
 
 import java.util.List;
 
 import ru.domain.Rubric;
 
-public interface RubricService {
+public interface RubricDao {
 	public Rubric findOne(Long rubricId);
 	public List<Rubric> findAll();
 	public List<Rubric> findByMainRubricId(Long id);

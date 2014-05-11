@@ -9,24 +9,26 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import ru.daoservice.OrganizationDao;
+import ru.daoservice.RubricDao;
 import ru.domain.Organization;
 import ru.domain.Rubric;
 import ru.rest.model.JsonOrganizations;
 import ru.rest.model.converter.OrganizationToJsonConverter;
-import ru.service.OrganizationService;
-import ru.service.RubricService;
 
 
 @Component
 @Path("/organizationService")
+@Scope("request")
 public class OrganizationResource{
 	@Autowired
-	private OrganizationService organizationService;
+	private OrganizationDao organizationService;
 	
 	@Autowired
-	private RubricService rubricService;
+	private RubricDao rubricService;
 	
 	/*@GET
 	@Path("organizations")

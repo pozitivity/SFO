@@ -13,20 +13,22 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import ru.daoservice.LogoDao;
 import ru.domain.Logo;
 import ru.rest.model.JsonLogo;
 import ru.rest.model.JsonLogos;
 import ru.rest.model.converter.LogoToJsonConverter;
-import ru.service.LogoService;
 
 
 @Component
 @Path("/logoService")
+@Scope("request")
 public class LogoResource{
 	@Autowired
-	private LogoService logoService;
+	private LogoDao logoService;
 	
 	@GET
 	@Path("logos")

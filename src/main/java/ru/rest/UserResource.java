@@ -8,18 +8,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import ru.daoservice.UserDao;
 import ru.rest.model.JsonUsers;
 import ru.rest.model.converter.UserToJsonConverter;
-import ru.service.UserService;
 
 
 @Component
 @Path("/userService")
+@Scope("request")
 public class UserResource{
 	@Autowired
-	private UserService userService;
+	private UserDao userService;
 	
 	@GET
 	@Path("users")

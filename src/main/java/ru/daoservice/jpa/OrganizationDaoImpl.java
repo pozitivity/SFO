@@ -1,4 +1,4 @@
-package ru.service.jpa;
+package ru.daoservice.jpa;
 
 import java.util.List;
 
@@ -7,18 +7,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
+import ru.daoservice.OrganizationDao;
 import ru.domain.Info;
 import ru.domain.Logo;
 import ru.domain.Organization;
 import ru.domain.Rubric;
 import ru.domain.User;
 import ru.repository.OrganizationRepository;
-import ru.service.OrganizationService;
 
 @Service("organizationService")
 @Repository
 @Transactional
-public class OrganizationServiceImpl implements OrganizationService{
+public class OrganizationDaoImpl implements OrganizationDao{
 
 	@Autowired
 	private OrganizationRepository organizationRepository;
