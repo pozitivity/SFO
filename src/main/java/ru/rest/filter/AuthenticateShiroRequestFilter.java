@@ -16,6 +16,16 @@ public class AuthenticateShiroRequestFilter implements ContainerRequestFilter {
 		if (request.getPath().contains("authentication/")) {
 			return request;
 		}
+		if (request.getPath().contains("rubric/")) {
+			return request;
+		}
+		if (request.getPath().contains("city/")) {
+			return request;
+		}
+		
+		if (request.getPath().contains("image/")) {
+			return request;
+		}
 		
 		Subject subject = SecurityUtils.getSubject();
 		if (!subject.isAuthenticated()) {
