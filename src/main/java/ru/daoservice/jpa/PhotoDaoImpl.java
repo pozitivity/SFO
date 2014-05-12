@@ -11,7 +11,7 @@ import ru.daoservice.PhotoDao;
 import ru.domain.Photo;
 import ru.repository.PhotoRepository;
 
-@Service("photoService")
+@Service("photoDaoService")
 @Repository
 @Transactional
 public class PhotoDaoImpl implements PhotoDao{

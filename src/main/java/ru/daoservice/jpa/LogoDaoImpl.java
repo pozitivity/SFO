@@ -12,7 +12,7 @@ import ru.daoservice.LogoDao;
 import ru.domain.Logo;
 import ru.repository.LogoRepository;
 
-@Service("logoService")
+@Service("logoDaoService")
 @Repository
 @Transactional
 public class LogoDaoImpl implements LogoDao{

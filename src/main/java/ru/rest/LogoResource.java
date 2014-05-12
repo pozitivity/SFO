@@ -24,7 +24,7 @@ import ru.rest.model.converter.LogoToJsonConverter;
 
 
 @Component
-@Path("/logoService")
+@Path("/logo")
 @Scope("request")
 public class LogoResource{
 	@Autowired

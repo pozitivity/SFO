@@ -13,7 +13,7 @@ import ru.domain.TypeUser;
 import ru.domain.User;
 import ru.repository.UserRepository;
 
-@Service("userService")
+@Service("userDaoService")
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao{

@@ -11,7 +11,7 @@ import ru.daoservice.RubricDao;
 import ru.domain.Rubric;
 import ru.repository.RubricRepository;
 
-@Service("rubricService")
+@Service("rubricDaoService")
 @Repository
 @Transactional
 public class RubricDaoImpl implements RubricDao{

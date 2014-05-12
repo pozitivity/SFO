@@ -11,7 +11,7 @@ import ru.daoservice.TypeUserDao;
 import ru.domain.TypeUser;
 import ru.repository.TypeUserRepository;
 
-@Service("typeuserService")
+@Service("typeuserDaoService")
 @Repository
 @Transactional
 public class TypeUserDaoImpl implements TypeUserDao{

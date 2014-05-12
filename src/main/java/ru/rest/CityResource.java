@@ -25,7 +25,7 @@ import ru.rest.model.converter.LogoToJsonConverter;
 
 @Component
 @Scope("request")
-@Path("/cityDaoService")
+@Path("/city")
 public class CityResource{
 	@Autowired
 	private CityDao cityService;

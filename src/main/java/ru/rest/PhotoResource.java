@@ -17,7 +17,7 @@ import ru.rest.model.converter.PhotoToJsonConverter;
 
 
 @Component
-@Path("/photoService")
+@Path("/photo")
 @Scope("request")
 public class PhotoResource{
 	@Autowired

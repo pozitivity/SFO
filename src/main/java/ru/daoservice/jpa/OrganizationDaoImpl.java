@@ -15,7 +15,7 @@ import ru.domain.Rubric;
 import ru.domain.User;
 import ru.repository.OrganizationRepository;
 
-@Service("organizationService")
+@Service("organizationDaoService")
 @Repository
 @Transactional
 public class OrganizationDaoImpl implements OrganizationDao{

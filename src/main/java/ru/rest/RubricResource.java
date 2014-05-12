@@ -22,7 +22,7 @@ import ru.rest.model.converter.RubricToJsonConverter;
 
 
 @Component
-@Path("/rubricService")
+@Path("/rubric")
 @Scope("request")
 public class RubricResource{
 	@Autowired

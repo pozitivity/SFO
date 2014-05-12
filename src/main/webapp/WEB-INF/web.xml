@@ -11,6 +11,12 @@
     </context-param>
     
     <listener>
+       <listener-class>
+           org.springframework.web.context.request.RequestContextListener 
+       </listener-class>
+   </listener>  
+    
+    <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
@@ -25,10 +31,10 @@
             <param-name>com.sun.jersey.config.property.packages</param-name>
             <param-value>ru.rest</param-value>
         </init-param>
-        <!--<init-param>
-			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-			<param-value>true</param-value>
-		</init-param>-->
+        <init-param>
+          <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
+         <param-value>ru.shool4.votesystem.rest.filter.AuthenticateShiroRequestFilter</param-value> 
+      	</init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
  
@@ -37,5 +43,33 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
  
+ 	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
+			
+	 <!-- Shiro listener -->
+	 <listener>
+    	<listener-class>ru.security.ShiroEnvironmentLoaderListener</listener-class>
+ 	 </listener>
+     <listener>
+    	<listener-class>ru.session.SessionListener</listener-class>
+  	</listener>  
+	
+	<!-- The filter-name matches name of a 'shiroFilter' bean inside applicationContext.xml -->
+	<filter>
+	    <filter-name>shiroFilter</filter-name>
+	    <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+	</filter> 
+	
+	<!-- Make sure any request you want accessible to Shiro is filtered. /* catches all -->
+	<!-- requests.  Usually this filter mapping is defined first (before all others) to -->
+	<!-- ensure that Shiro works in subsequent filters in the filter chain:   -->         
+	<filter-mapping>
+	    <filter-name>shiroFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	    <dispatcher>REQUEST</dispatcher>
+	    <dispatcher>FORWARD</dispatcher>
+	    <dispatcher>INCLUDE</dispatcher>
+	    <dispatcher>ERROR</dispatcher>
+	</filter-mapping> 
   
 </web-app>

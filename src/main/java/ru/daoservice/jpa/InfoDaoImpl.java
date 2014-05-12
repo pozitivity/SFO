@@ -11,7 +11,7 @@ import ru.daoservice.InfoDao;
 import ru.domain.Info;
 import ru.repository.InfoRepository;
 
-@Service("infoService")
+@Service("infoDaoService")
 @Repository
 @Transactional
 public class InfoDaoImpl implements InfoDao{

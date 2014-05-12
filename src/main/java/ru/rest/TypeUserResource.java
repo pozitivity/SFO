@@ -17,7 +17,7 @@ import ru.rest.model.converter.TypeUserToJsonConverter;
 
 
 @Component
-@Path("/typeUserService")
+@Path("/typeUser")
 @Scope("request")
 public class TypeUserResource{
 	@Autowired

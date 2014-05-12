@@ -21,7 +21,7 @@ import ru.rest.model.converter.OrganizationToJsonConverter;
 
 
 @Component
-@Path("/organizationService")
+@Path("/organization")
 @Scope("request")
 public class OrganizationResource{
 	@Autowired

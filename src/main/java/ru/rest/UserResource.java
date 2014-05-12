@@ -17,7 +17,7 @@ import ru.rest.model.converter.UserToJsonConverter;
 
 
 @Component
-@Path("/userService")
+@Path("/user")
 @Scope("request")
 public class UserResource{
 	@Autowired

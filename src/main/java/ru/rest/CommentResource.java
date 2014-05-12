@@ -17,7 +17,7 @@ import ru.rest.model.converter.CommentToJsonConverter;
 
 
 @Component
-@Path("/commentService")
+@Path("/comment")
 @Scope("request")
 public class CommentResource{
 	@Autowired

@@ -20,7 +20,7 @@ import ru.rest.model.converter.InfoToJsonConverter;
 
 
 @Component
-@Path("/infoService")
+@Path("/info")
 @Scope("request")
 public class InfoResource{
 	@Autowired
