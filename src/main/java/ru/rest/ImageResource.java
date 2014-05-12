@@ -1,6 +1,7 @@
 package ru.rest;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 
 import javax.ws.rs.GET;
@@ -41,7 +42,7 @@ public class ImageResource {
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public Response uploadFile(
 			@FormDataParam("file") InputStream fileInputStream,
-			@FormDataParam("file") FormDataContentDisposition contentDispositionHeader){
+			@FormDataParam("file") FormDataContentDisposition contentDispositionHeader) throws IOException{
 		return Response.status(200).entity(contentDispositionHeader.getFileName()).build();
 	}
  
