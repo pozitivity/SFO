@@ -13,11 +13,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "logevents")
 public class LogEvent implements Serializable {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public enum Severity {
 		DEBUG("DEBUG"), INFO("INFO"), WARN("WARN"), ERROR("ERROR");
 		
@@ -31,7 +32,7 @@ public class LogEvent implements Serializable {
 			return name;
 		}
 	};
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -126,5 +127,4 @@ public class LogEvent implements Serializable {
 	public void setExtra(String extra) {
 		this.extra = extra;
 	}
-	
 }

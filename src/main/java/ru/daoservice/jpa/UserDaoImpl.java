@@ -16,7 +16,7 @@ import ru.repository.UserRepository;
 @Service("userDaoService")
 @Repository
 @Transactional
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -38,5 +38,20 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public User findByLogin(String login) {
 		return userRepository.findByLogin(login);
+	}
+
+	@Override
+	public User update(User t) {
+		return userRepository.save(t);
+	}
+
+	@Override
+	public User insert(User t) {
+		return userRepository.save(t);
+	}
+
+	@Override
+	public void delete(User t) {
+		userRepository.delete(t);
 	}
 }

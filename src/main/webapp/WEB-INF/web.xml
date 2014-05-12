@@ -33,7 +33,7 @@
         </init-param>
         <init-param>
           <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-         <param-value>ru.shool4.votesystem.rest.filter.AuthenticateShiroRequestFilter</param-value> 
+         <param-value>ru.rest.filter.AuthenticateShiroRequestFilter</param-value> 
       	</init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

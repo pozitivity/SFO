@@ -6,7 +6,7 @@ import ru.domain.City;
 import ru.domain.TypeUser;
 import ru.domain.User;
 
-public interface UserDao {
+public interface UserDao extends BaseDao<User> {
 	public User findOne(Long userId);
 	
 	public List<User> findAll();

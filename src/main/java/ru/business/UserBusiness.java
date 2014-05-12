@@ -1,11 +1,8 @@
 package ru.business;
 
-import java.util.List;
 
 import ru.domain.User;
 
-public interface UserBusiness {
-	public List<User> findAll();
-	
+public interface UserBusiness extends BaseBussiness<User> {       	
 	User findByLogin(String login);
 }

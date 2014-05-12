@@ -16,13 +16,13 @@ public class SessionListener implements HttpSessionListener {
 	
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
-		logEventBussinnes.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se.getSession()));
+		logEventBussinnes.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se != null ? se.getSession() : "null"));
 		
 	}
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent se) {
-		logEventBussinnes.info("SESSION", "CLOSE", MessageFormat.format("Existing session {0} has been closed", se.getSession()));
+		logEventBussinnes.info("SESSION", "CLOSE", MessageFormat.format("Existing session {0} has been closed", se != null ? se.getSession() : "null"));
 		
 	}
 	

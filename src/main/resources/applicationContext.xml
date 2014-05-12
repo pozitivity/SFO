@@ -15,7 +15,7 @@
   <!--  Activates various annotations to be detected in bean classes-->
    <context:annotation-config />
 
-    <context:component-scan base-package="ru.rest" />
+   <context:component-scan base-package="ru.daoservice, ru.session, ru.rest, ru.business" />
    <import resource="datasource.xml"/>
    
 </beans>

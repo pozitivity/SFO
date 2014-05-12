@@ -7,6 +7,7 @@ import ru.daoservice.jpa.LogEventDaoImpl;
 import ru.domain.LogEvent;
 import ru.domain.LogEvent.Severity;
 
+
 @Service("logEventBusiness")
 public class LogEventBusinessImpl extends LogEventDaoImpl implements LogEventBusiness {
 
