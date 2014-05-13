@@ -4,35 +4,35 @@ CREATE TABLE IF NOT EXISTS type_user(
 	type_user_id serial,
 	type_user varchar(50) NOT NULL,
 	PRIMARY KEY(type_user_id)
-); 
+) DEFAULT CHARSET=utf8; 
 CREATE TABLE IF NOT EXISTS city(
 	city_id serial,
 	city_name varchar(50) NOT NULL,
 	PRIMARY KEY(city_id)
-);
+) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS photo(
 	photo_id serial,
 	photo mediumblob,
 	photo_name varchar(100) NOT NULL,
 	PRIMARY KEY(photo_id)
-);
+) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS info(
 	info_id serial,
 	info text,
 	PRIMARY KEY(info_id)
-);
+) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS logo(
 	logo_id serial,
 	logo mediumblob,
 	logo_name varchar(100) NOT NULL,
 	PRIMARY KEY(logo_id)
-);
+) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS rubric(
 	rubric_id serial,
 	name varchar(100) NOT NULL,
 	main_rubric_id bigint unsigned,
 	PRIMARY KEY(rubric_id)
-);
+) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS user(
 	user_id serial,
 	login varchar(50) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS user(
 	PRIMARY KEY(user_id),
 	UNIQUE KEY(login),
 	UNIQUE KEY(password)
-);
+) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS organization(
 	organization_id serial,
 	rubric_id bigint unsigned NOT NULL,
@@ -57,13 +57,13 @@ CREATE TABLE IF NOT EXISTS organization(
 	name varchar(100) NOT NULL,
 	phone varchar(100) NOT NULL,
 	PRIMARY KEY(organization_id)
-);
+) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS comment(
 	comment_id serial,
 	comment text NOT NULL,
 	organization_id bigint unsigned NOT NULL,
 	PRIMARY KEY(comment_id)
-);
+) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS logevents(
 	id serial,
 	category VARCHAR(64) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS logevents(
 	message VARCHAR(1024),
 	extra MEDIUMTEXT,
 	PRIMARY KEY (id)
-);
+) DEFAULT CHARSET=utf8;
 ALTER TABLE organization ADD FOREIGN KEY(rubric_id) REFERENCES rubric(rubric_id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE organization ADD FOREIGN KEY(info_id) REFERENCES info(info_id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE organization ADD FOREIGN KEY(logo_id) REFERENCES logo(logo_id) ON DELETE CASCADE ON UPDATE CASCADE;
