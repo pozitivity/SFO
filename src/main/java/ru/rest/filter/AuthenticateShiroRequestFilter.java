@@ -23,7 +23,7 @@ public class AuthenticateShiroRequestFilter implements ContainerRequestFilter {
 			return request;
 		}
 		
-		if (request.getPath().contains("image/")) {
+		if (request.getPath().contains("logo/")) {
 			return request;
 		}
 		

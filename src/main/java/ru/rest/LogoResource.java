@@ -12,9 +12,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
 
 import ru.daoservice.LogoDao;
 import ru.domain.Logo;
@@ -30,47 +40,25 @@ public class LogoResource{
 	@Autowired
 	private LogoDao logoService;
 	
-	@GET
-	@Path("logos")
-	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response getAllLogos(){
-		JsonLogos jLogos = LogoToJsonConverter.convertEntityListToJsonList(logoService.findAll());
-		return Response.ok(jLogos).build();
-	}
-	
-	@GET
-	@Path("logo/{id}")
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response findById(@PathParam("id") Long id){
-		JsonLogo logoId = LogoToJsonConverter.convertEntityToJson(logoService.findOne(id));
-		if(logoId != null){
-			return Response.status(200).entity(logoId).build();
-		}else{
-			return Response.status(404).entity("The logo with the id " + id + "does not exist").build();
-		}
-	}
-	
 	@POST
-	@Path("/saveLogo")
-	@Consumes({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	@Produces({MediaType.TEXT_PLAIN})
-	public Response saveLogo(){
-		File file = new File("images\\logo_13.jpg");
-		byte[] bFile = new byte[(int)file.length()];
-		
+	@Path("/upload")
+	@Consumes(MediaType.MULTIPART_FORM_DATA)
+	public Response saveLogo(@FormDataParam("logo") InputStream logoInputStream,
+			@FormDataParam("logo") FormDataContentDisposition contentDispositionHeader) throws IOException{
+		byte[] bLogo = new byte[8192];
 		try{
-			FileInputStream fileInputStream = new FileInputStream(file);
-			fileInputStream.read(bFile);
-			fileInputStream.close();
-		}catch(Exception e){
+			logoInputStream.read(bLogo);
+			logoInputStream.close();
+		}
+		catch(Exception e){
 			e.printStackTrace();
 		}
-		
 		Logo logo = new Logo();
-		logo.setLogoName("logo#13");
-		logo.setLogo(bFile);
-		
+		//logo.setLogoId(logo.getLogoId());
+		logo.setLogo(bLogo);
+		logo.setLogoId(logo.getLogoId());
+		logo.setLogoName(contentDispositionHeader.getFileName());
 		logoService.save(logo);
-		return Response.ok(logo).build();
+		return Response.status(200).entity(logo).build();
 	}
 }
