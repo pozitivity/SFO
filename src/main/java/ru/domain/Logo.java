@@ -33,7 +33,7 @@ public class Logo implements Serializable{
 	@Column(name = "logo", columnDefinition = "mediumblob")
 	private byte[] logo;
 	
-	@OneToOne(optional = false, mappedBy = "logo", fetch = FetchType.EAGER, 
+	@OneToOne(optional = true, mappedBy = "logo", fetch = FetchType.EAGER, 
 	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
 	private Organization contacts;
 	
@@ -63,7 +63,7 @@ public class Logo implements Serializable{
 		this.logo = logo;
 	}
 
-	public long getLogoId(){
+	public Long getLogoId(){
 		return logoId;
 	}
 	
@@ -78,4 +78,5 @@ public class Logo implements Serializable{
 	public void setContacts(Organization contacts){
 		this.contacts = contacts;
 	}
+	
 }

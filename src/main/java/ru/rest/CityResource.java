@@ -59,14 +59,14 @@ public class CityResource{
 		sCity.setCityName(cityName);
 		if(sCity != null){
 			JsonCity jCity = CityToJsonConverter.convertEntityToJson(cityService.save(sCity));
-			return Response.status(200).entity(jCity).build();
+			return Response.ok(jCity).build();
 		} else
 			return Response.status(404).entity("Failure creation new city").build();
 	}
 	
 	@GET
 	@Path("/deleteCity")
-	@Produces({MediaType.APPLICATION_JSON + ";chraset=utf-8"})
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	@Consumes({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	public Response deleteCity(@QueryParam("cityId") Long cityId){
 		City sCity = new City();

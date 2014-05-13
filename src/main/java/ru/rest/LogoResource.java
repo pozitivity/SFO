@@ -43,6 +43,7 @@ public class LogoResource{
 	@POST
 	@Path("/upload")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	public Response saveLogo(@FormDataParam("logo") InputStream logoInputStream,
 			@FormDataParam("logo") FormDataContentDisposition contentDispositionHeader) throws IOException{
 		byte[] bLogo = new byte[8192];
@@ -53,12 +54,10 @@ public class LogoResource{
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		Logo logo = new Logo();
-		//logo.setLogoId(logo.getLogoId());
-		logo.setLogo(bLogo);
-		logo.setLogoId(logo.getLogoId());
-		logo.setLogoName(contentDispositionHeader.getFileName());
-		logoService.save(logo);
-		return Response.status(200).entity(logo).build();
+		Logo sLogo = new Logo();
+		sLogo.setLogo(bLogo);
+		sLogo.setLogoName(contentDispositionHeader.getFileName());
+		JsonLogo jLogo = LogoToJsonConverter.convertEntityToJson(logoService.save(sLogo));
+		return Response.ok(jLogo).build();
 	}
 }
