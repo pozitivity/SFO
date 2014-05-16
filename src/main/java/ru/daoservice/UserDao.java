@@ -12,4 +12,5 @@ public interface UserDao extends BaseDao<User> {
 	public List<User> findAll();
 	public List<User>findByCityAndTypeUser(City city, TypeUser typeUser);
 	public User findByLogin(String login);
+	public void save(User user);
 }

@@ -49,4 +49,9 @@ public class CityDaoImpl implements CityDao {
 		updateToCity.setCityName(city.getCityName());
 		return cityRepository.save(updateToCity);
 	}
+
+	@Override
+	public City findByCityName(String cityName) {
+		return cityRepository.findByCityName(cityName);
+	}
 }

@@ -54,4 +54,10 @@ public class UserDaoImpl implements UserDao {
 	public void delete(User t) {
 		userRepository.delete(t);
 	}
+
+	@Override
+	public void save(User user) {
+		userRepository.save(user);
+		
+	}
 }

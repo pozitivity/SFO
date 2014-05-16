@@ -27,6 +27,14 @@ public class AuthenticateShiroRequestFilter implements ContainerRequestFilter {
 			return request;
 		}
 		
+		if (request.getPath().contains("organization/")) {
+			return request;
+		}
+		
+		if (request.getPath().contains("user/")) {
+			return request;
+		}
+		
 		Subject subject = SecurityUtils.getSubject();
 		if (!subject.isAuthenticated()) {
 			  throw new WebApplicationException(Status.UNAUTHORIZED);
