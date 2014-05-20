@@ -25,6 +25,7 @@
         
         <transformer input-channel="newLeadChannel" output-channel="confEmailChannel" ref="leadToEmailTransformer" />
         
+        
         <channel id="confEmailChannel" />
         
         <mail:outbound-channel-adapter

@@ -1,12 +1,14 @@
 package ru.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.QueryParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,8 @@ import ru.domain.TypeUser;
 import ru.domain.User;
 import ru.rest.model.JsonUsers;
 import ru.rest.model.converter.UserToJsonConverter;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
+//import org.springframework.mail.MailSender;
+//import org.springframework.mail.SimpleMailMessage;
 
 
 @Component
@@ -35,8 +37,8 @@ public class UserResource{
 	private CityDao cityDao;
 	@Autowired
 	private TypeUserDao typeUserDao;
-	@Autowired
-	private MailSender mailSender;
+	/*@Autowired
+	private MailSender mailSender;*/
 	
 	@GET
 	@Path("users")
@@ -48,11 +50,11 @@ public class UserResource{
 	
 	@POST
 	@Path("registration")
-	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response newUsers(@QueryParam("login") String login,
-			@QueryParam("password") String password, 
-			@QueryParam("cityName") String cityName){
+	//@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	//@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+	public Response newUsers(@FormParam("login") String login,
+			@FormParam("password") String password, 
+			@FormParam("cityName") String cityName){
 		User sUser = new User();
 		sUser.setLogin(login);
 		sUser.setPassword(password);
@@ -64,15 +66,15 @@ public class UserResource{
 		sUser.setTypeUser(sTypeUser);
 		userService.save(sUser);
 		
-		String to = "ppozitivity@yandex.ru";
+		/*String to = "ppozitivity@yandex.ru";
 		String subject = "Your profile created";
 		String body = "testing only";
 		SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setSubject(subject);
         message.setText(body);
-        mailSender.send(message);
+        mailSender.send(message);*/
         
-		return Response.status(200).build();
+		return Response.status(Status.CREATED).build();
 	}
 }
