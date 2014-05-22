@@ -2,6 +2,7 @@ package ru.rest;
 
 import java.io.Serializable;
 
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.FormParam;
@@ -60,5 +61,15 @@ public class AuthenticationResource implements Serializable {
 		return Response.ok("Already authenticated").build();
 	}
 	
-	
+	@Path("/logout")
+    @POST
+    public Response logout(@HeaderParam("X-Real-IP") String realIp, @HeaderParam("User-Agent") String userAgent) {
+		Subject subject = SecurityUtils.getSubject();
+		//String username = subject.getPrincipal().toString();
+		
+		subject.logout();
+		
+		//userSession.loggedOut(realIp, userAgent, username);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
 }
