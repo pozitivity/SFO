@@ -3,6 +3,7 @@ package ru.rest;
 import java.io.File;
 import java.io.FileInputStream;
 
+import javax.swing.ImageIcon;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.POST;
@@ -11,10 +12,12 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.QueryParam;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 
 
 
@@ -29,7 +32,6 @@ import com.sun.jersey.multipart.FormDataParam;
 import ru.daoservice.LogoDao;
 import ru.domain.Logo;
 import ru.rest.model.JsonLogo;
-import ru.rest.model.JsonLogos;
 import ru.rest.model.converter.LogoToJsonConverter;
 
 
@@ -59,5 +61,16 @@ public class LogoResource{
 		sLogo.setLogoName(contentDispositionHeader.getFileName());
 		JsonLogo jLogo = LogoToJsonConverter.convertEntityToJson(logoService.save(sLogo));
 		return Response.ok(jLogo).build();
+	}
+	
+	@GET
+	@Path("/findById")
+	//@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
+	@Produces("image/png")
+	public Response getLogo(@QueryParam("logoId") Long logoId){
+		Logo sLogo = logoService.findOne(logoId);
+		//JsonLogo jLogo = LogoToJsonConverter.convertEntityToJson(sLogo);
+		byte[] byteImage = new byte [sLogo.getLogo().length];
+		return Response.ok(new ImageIcon(byteImage).getImage()).build();
 	}
 }
