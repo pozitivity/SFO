@@ -48,4 +48,9 @@ public class OrganizationDaoImpl implements OrganizationDao{
 	public List<Organization> findByRubric(Rubric rubric) {
 		return (List<Organization>)organizationRepository.findByRubric(rubric);
 	}
+
+	@Override
+	public List<Organization> findByUser(User user) {
+		return (List<Organization>) organizationRepository.findByUser(user);
+	}
 }

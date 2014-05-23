@@ -14,4 +14,5 @@ public interface OrganizationDao {
 	public List<Organization> findByUserAndLogoAndRubricAndInfoOrganization(User user, Logo logo, Rubric rubric, Info info);
 	public Organization save(Organization organization);
 	public List<Organization> findByRubric(Rubric rubric);
+	public List<Organization> findByUser(User user);
 }

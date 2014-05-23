@@ -41,8 +41,7 @@ CREATE TABLE IF NOT EXISTS user(
 	city_id bigint unsigned NOT NULL,
 	type_user_id bigint unsigned NOT NULL,
 	PRIMARY KEY(user_id),
-	UNIQUE KEY(login),
-	UNIQUE KEY(password)
+	UNIQUE KEY(login)
 ) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS organization(
 	organization_id serial,
@@ -56,6 +55,7 @@ CREATE TABLE IF NOT EXISTS organization(
 	postcode varchar(100) NOT NULL,
 	name varchar(100) NOT NULL,
 	phone varchar(100) NOT NULL,
+	published boolean DEFAULT FALSE,
 	PRIMARY KEY(organization_id)
 ) DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS comment(

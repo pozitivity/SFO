@@ -64,12 +64,15 @@ public class Organization implements Serializable{
 	@Column(name="name")
 	private String name;
 	
+	@Column(name = "published")
+	private boolean published;
+	
 	public Organization() {
 		
 	}
 	
 	public Organization(Long organizationId, String address, Rubric rubric, String postcode, String website, 
-			String phone, Info info, Logo logo, User user,String name, City city){
+			String phone, Info info, Logo logo, User user,String name, City city, boolean published){
 		this.organizationId = organizationId;
 		this.address = address;
 		this.rubric = rubric;
@@ -81,6 +84,7 @@ public class Organization implements Serializable{
 		this.user = user;
 		this.name = name;
 		this.city = city;
+		this.published = published;
 	}
 	
 	public Long getOrganizationId(){
@@ -169,5 +173,13 @@ public class Organization implements Serializable{
 	
 	public void setName(String name){
 		this.name = name;
+	}
+
+	public boolean isPublished() {
+		return published;
+	}
+
+	public void setPublished(boolean published) {
+		this.published = published;
 	}
 }

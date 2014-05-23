@@ -1,6 +1,8 @@
 package ru.rest.model;
 
-import javax.xml.bind.annotation.XmlRootElement;;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import ru.domain.City;
 
 
 @XmlRootElement(name = "organization")
@@ -26,12 +28,16 @@ public class JsonOrganization {
 	
 	private String name;
 	
+	private JsonCity city;
+	
+	private boolean published;
+
 	public JsonOrganization(){
 		
 	}
 	
 	public JsonOrganization(Long organizationId, String address, String postcode, String website, String phone, 
-			JsonRubric rubric, JsonInfo info, JsonLogo logo, JsonUser user){
+			JsonRubric rubric, JsonInfo info, JsonLogo logo, JsonUser user, String name, JsonCity city, boolean published){
 		this.organizationId = organizationId;
 		this.address = address;
 		this.postcode = postcode;
@@ -41,6 +47,9 @@ public class JsonOrganization {
 		this.info = info;
 		this.logo = logo;
 		this.user = user;
+		this.name = name;
+		this.city = city;
+		this.published = published;
 	}
 	
 	public Long getOrganizationId(){
@@ -121,6 +130,22 @@ public class JsonOrganization {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public JsonCity getCity() {
+		return city;
+	}
+
+	public void setCity(JsonCity city) {
+		this.city = city;
+	}
+
+	public boolean isPublished() {
+		return published;
+	}
+
+	public void setPublished(boolean published) {
+		this.published = published;
 	}
 	
 }

@@ -14,8 +14,10 @@ import org.springframework.stereotype.Component;
 
 import ru.daoservice.OrganizationDao;
 import ru.daoservice.RubricDao;
+import ru.daoservice.UserDao;
 import ru.domain.Organization;
 import ru.domain.Rubric;
+import ru.domain.User;
 import ru.rest.model.JsonOrganizations;
 import ru.rest.model.converter.OrganizationToJsonConverter;
 
@@ -29,6 +31,9 @@ public class OrganizationResource{
 	
 	@Autowired
 	private RubricDao rubricService;
+	
+	@Autowired
+	private UserDao userDao;
 	
 	/*@GET
 	@Path("organizations")
@@ -44,6 +49,15 @@ public class OrganizationResource{
 	public Response getOrganizationsByRubric(@QueryParam("rubricId") Long rubricId) {
 		Rubric rubric = rubricService.findOne(rubricId);
 		JsonOrganizations jOrganizations = OrganizationToJsonConverter.convertEntityListToJsonList(organizationService.findByRubric(rubric));
+		return Response.ok(jOrganizations).build();
+	}
+	
+	@GET
+	@Path("/byUser")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
+	public Response getOrganizationsByUser(@QueryParam("userId") Long userId){
+		User user = userDao.findOne(userId);
+		JsonOrganizations jOrganizations = OrganizationToJsonConverter.convertEntityListToJsonList(organizationService.findByUser(user));
 		return Response.ok(jOrganizations).build();
 	}
 }

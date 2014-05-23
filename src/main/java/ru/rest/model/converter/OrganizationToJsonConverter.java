@@ -22,7 +22,8 @@ public class OrganizationToJsonConverter {
 		jOrganization.setWebsite(sOrganization.getWebsite());
 		jOrganization.setUser(sOrganization.getUser() == null ? null : UserToJsonConverter.convertEntityToJson(sOrganization.getUser()));
 		jOrganization.setName(sOrganization.getName());
-		
+		jOrganization.setCity(sOrganization.getCity() == null ? null : CityToJsonConverter.convertEntityToJson(sOrganization.getCity()));
+		jOrganization.setPublished(sOrganization.isPublished());
 		return jOrganization;
 	}
 	
@@ -37,6 +38,8 @@ public class OrganizationToJsonConverter {
 		sOrganization.setWebsite(jOrganization.getWebsite());
 		sOrganization.setUser(jOrganization.getUser() == null ? null : UserToJsonConverter.convertJsonToEntity(jOrganization.getUser()));
 		sOrganization.setName(jOrganization.getName());
+		sOrganization.setCity(jOrganization.getCity() == null ? null : CityToJsonConverter.convertJsonToEntity(jOrganization.getCity()));
+		sOrganization.setPublished(jOrganization.isPublished());
 		
 		return sOrganization;
 	}
