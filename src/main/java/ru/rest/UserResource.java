@@ -21,6 +21,7 @@ import ru.daoservice.UserDao;
 import ru.domain.City;
 import ru.domain.TypeUser;
 import ru.domain.User;
+import ru.rest.model.JsonUser;
 import ru.rest.model.JsonUsers;
 import ru.rest.model.converter.UserToJsonConverter;
 //import org.springframework.mail.MailSender;
@@ -46,6 +47,14 @@ public class UserResource{
 	public Response getAllUsers(){
 		JsonUsers jUsers = UserToJsonConverter.convertEntityListToJsonList(userService.findAll());
 		return Response.ok(jUsers).build();
+	}
+	
+	@GET
+	@Path("byLogin")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
+	public Response getUserByLogin(@QueryParam("login") String login){
+		JsonUser jUser = UserToJsonConverter.convertEntityToJson(userService.findByLogin(login));
+		return Response.ok(jUser).build();
 	}
 	
 	@POST

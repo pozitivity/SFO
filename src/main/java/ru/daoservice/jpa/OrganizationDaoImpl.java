@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import ru.daoservice.OrganizationDao;
+import ru.domain.City;
 import ru.domain.Info;
 import ru.domain.Logo;
 import ru.domain.Organization;
@@ -45,8 +46,8 @@ public class OrganizationDaoImpl implements OrganizationDao{
 	}
 
 	@Override
-	public List<Organization> findByRubric(Rubric rubric) {
-		return (List<Organization>)organizationRepository.findByRubric(rubric);
+	public List<Organization> findByRubricAndCity(Rubric rubric, City city) {
+		return (List<Organization>)organizationRepository.findByRubricAndCity(rubric,city);
 	}
 
 	@Override

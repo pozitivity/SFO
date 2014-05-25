@@ -12,17 +12,17 @@ import ru.business.LogEventBusiness;
 public class SessionListener implements HttpSessionListener {
 
 	@Autowired
-	private LogEventBusiness logEventBussinnes;
+	private LogEventBusiness logEventBusiness;
 	
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
-		logEventBussinnes.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se != null ? se.getSession() : "null"));
-		
+		//logEventBusiness.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se != null ? se.getSession() : "null"));
+		logEventBusiness.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se.getSession()));
 	}
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent se) {
-		logEventBussinnes.info("SESSION", "CLOSE", MessageFormat.format("Existing session {0} has been closed", se != null ? se.getSession() : "null"));
+		logEventBusiness.info("SESSION", "CLOSE", MessageFormat.format("Existing session {0} has been closed", se != null ? se.getSession() : "null"));
 		
 	}
 	

@@ -2,6 +2,7 @@ package ru.daoservice;
 
 import java.util.List;
 
+import ru.domain.City;
 import ru.domain.Info;
 import ru.domain.Logo;
 import ru.domain.Organization;
@@ -13,6 +14,6 @@ public interface OrganizationDao {
 	public List<Organization> findAll();
 	public List<Organization> findByUserAndLogoAndRubricAndInfoOrganization(User user, Logo logo, Rubric rubric, Info info);
 	public Organization save(Organization organization);
-	public List<Organization> findByRubric(Rubric rubric);
+	public List<Organization> findByRubricAndCity(Rubric rubric, City city);
 	public List<Organization> findByUser(User user);
 }
