@@ -22,6 +22,9 @@ import java.io.OutputStream;
 
 
 
+import java.util.ArrayList;
+
+import org.apache.poi.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -48,7 +51,8 @@ public class LogoResource{
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	public Response saveLogo(@FormDataParam("logo") InputStream logoInputStream,
 			@FormDataParam("logo") FormDataContentDisposition contentDispositionHeader) throws IOException{
-		byte[] bLogo = new byte[8192];
+		//byte[] bLogo = new byte[1024];
+		byte[] bLogo = IOUtils.toByteArray(logoInputStream);
 		try{
 			logoInputStream.read(bLogo);
 			logoInputStream.close();
@@ -64,13 +68,10 @@ public class LogoResource{
 	}
 	
 	@GET
-	@Path("/findById")
-	//@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	@Produces("image/png")
-	public Response getLogo(@QueryParam("logoId") Long logoId){
-		Logo sLogo = logoService.findOne(logoId);
-		//JsonLogo jLogo = LogoToJsonConverter.convertEntityToJson(sLogo);
-		byte[] byteImage = new byte [sLogo.getLogo().length];
-		return Response.ok(new ImageIcon(byteImage).getImage()).build();
-	}
+	 @Path("/byId")
+	 @Produces("image/png")
+	 public Response imageBytes(@QueryParam("logoId") Long logoId) {
+	  byte[] image = logoService.findOne(logoId).getLogo();
+	  return Response.ok(image, "image/png").build();
+	 }
 }

@@ -16,8 +16,8 @@ public class SessionListener implements HttpSessionListener {
 	
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
-		//logEventBusiness.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se != null ? se.getSession() : "null"));
-		logEventBusiness.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se.getSession()));
+		logEventBusiness.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se != null ? se.getSession() : "null"));
+		//logEventBusiness.info("SESSION", "OPEN", MessageFormat.format("New session {0} has been opened.", se.getSession()));
 	}
 
 	@Override
