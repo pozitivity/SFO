@@ -18,4 +18,31 @@
    <context:component-scan base-package="ru.daoservice, ru.session, ru.rest, ru.business" />
    <import resource="datasource.xml"/>
    
+
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
+          p:session-ref="mailSession" /> -->
+   
+    <!-- SET default mail properties -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="25"/>
+        <property name="username" value="coo.adm.tgek@gmail.com"/>
+        <property name="password" value="radio2906head"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>
+     
+    <!-- You can have some pre-configured messagess also which are ready to send -->
+    <bean id="preConfiguredMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="to" value="test@gmail.com"></property>
+        <property name="from" value="coo.adm.tgek@gmail.com"></property>
+        <property name="subject" value="SAMPLE SEND MAIL"/>
+    </bean>
+   
 </beans>

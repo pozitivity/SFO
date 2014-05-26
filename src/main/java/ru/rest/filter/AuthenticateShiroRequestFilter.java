@@ -22,6 +22,9 @@ public class AuthenticateShiroRequestFilter implements ContainerRequestFilter {
 		if (request.getPath().contains("city/")) {
 			return request;
 		}
+		if (request.getPath().contains("sendmail/")) {
+			return request;
+		}
 		
 		if (request.getPath().contains("logo/")) {
 			return request;

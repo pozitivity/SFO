@@ -53,6 +53,12 @@
             <artifactId>spring-core</artifactId>
            <version>3.2.3.RELEASE</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>3.2.3.RELEASE</version>
+        </dependency>
  
        <dependency>
             <groupId>org.springframework</groupId>
@@ -376,6 +382,13 @@
             <artifactId>jersey-multipart</artifactId>
             <version>1.8</version>
         </dependency>
+        
+		<!--  mail -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.3</version>
+		</dependency>
   
     </dependencies>
 
