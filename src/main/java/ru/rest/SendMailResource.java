@@ -22,10 +22,11 @@ public class SendMailResource {
 	private MailSender mailSender;
 	
 	@GET
-	@Path("sendTestMail")
+	@Path("sendMailReg")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response sendTestMail(@QueryParam("to") String to, @QueryParam("subject") String subject, @QueryParam("text") String text) {
-		//mailSender.
+	public Response sendTestMail(@QueryParam("to") String to, 
+			@QueryParam("subject") String subject, 
+			@QueryParam("text") String text) {
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 		mailMessage.setTo(to);
 		mailMessage.setSubject(subject);

@@ -11,6 +11,8 @@ public class JsonUser {
 	
 	private String password;
 	
+	private String email;
+	
 	private boolean blocked;
 	
 	private JsonCity city;
@@ -63,6 +65,14 @@ public class JsonUser {
 
 	public void setTypeUser(JsonTypeUser typeUser) {
 		this.typeUser = typeUser;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

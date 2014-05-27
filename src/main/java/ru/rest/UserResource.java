@@ -24,8 +24,8 @@ import ru.domain.User;
 import ru.rest.model.JsonUser;
 import ru.rest.model.JsonUsers;
 import ru.rest.model.converter.UserToJsonConverter;
-//import org.springframework.mail.MailSender;
-//import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 
 
 @Component
@@ -63,26 +63,19 @@ public class UserResource{
 	//@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	public Response newUsers(@FormParam("login") String login,
 			@FormParam("password") String password, 
-			@FormParam("cityName") String cityName){
+			@FormParam("cityName") String cityName,
+			@FormParam("email") String email){
 		User sUser = new User();
 		sUser.setLogin(login);
 		sUser.setPassword(password);
 		City sCity = cityDao.findByCityName(cityName);
 		sUser.setCity(sCity);
+		sUser.setEmail(email);
 		Number id = 2;
 		Long typeUserId = id.longValue();
 		TypeUser sTypeUser = typeUserDao.findOne(typeUserId);
 		sUser.setTypeUser(sTypeUser);
 		userService.save(sUser);
-		
-		/*String to = "ppozitivity@yandex.ru";
-		String subject = "Your profile created";
-		String body = "testing only";
-		SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(body);
-        mailSender.send(message);*/
         
 		return Response.status(Status.CREATED).build();
 	}

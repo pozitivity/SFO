@@ -18,6 +18,7 @@ public class UserToJsonConverter {
 		jUser.setLogin(sUser.getLogin());
 		jUser.setPassword(sUser.getPassword());
 		jUser.setTypeUser(sUser.getTypeUser() == null ? null : TypeUserToJsonConverter.convertEntityToJson(sUser.getTypeUser()));
+		jUser.setEmail(sUser.getEmail());
 		
 		return jUser;
 	}
@@ -29,6 +30,7 @@ public class UserToJsonConverter {
 		sUser.setLogin(jUser.getLogin());
 		sUser.setPassword(jUser.getPassword());
 		sUser.setTypeUser(jUser.getTypeUser() == null ? null : TypeUserToJsonConverter.convertJsonToEntity(jUser.getTypeUser()));
+		sUser.setEmail(jUser.getEmail());
 		
 		return sUser;
 	}

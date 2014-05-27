@@ -45,12 +45,12 @@ public class Organization implements Serializable{
 	@Column(name = "phone")
 	private String phone;
 	
-	@OneToOne
-	@JoinColumn(name = "info_id")
+	@ManyToOne
+	@JoinColumn(name = "info_id", nullable = true)
 	private Info info;
 	
-	@OneToOne
-	@JoinColumn(name = "logo_id")
+	@ManyToOne
+	@JoinColumn(name = "logo_id", nullable = true)
 	private Logo logo;
 	
 	@ManyToOne
@@ -65,7 +65,7 @@ public class Organization implements Serializable{
 	private String name;
 	
 	@Column(name = "published")
-	private boolean published;
+	private boolean published = false;
 	
 	public Organization() {
 		

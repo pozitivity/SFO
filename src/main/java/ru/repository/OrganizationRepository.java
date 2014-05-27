@@ -12,7 +12,7 @@ import ru.domain.Organization;
 import ru.domain.Rubric;
 
 public interface OrganizationRepository extends PagingAndSortingRepository<Organization, Long>{
-	public List<Organization> findByUserAndLogoAndRubricAndInfoOrganization(User user, Logo logo, Rubric rubric, Info infoOrganization);
+	public List<Organization> findByUserAndLogoAndRubricAndInfo(User user, Logo logo, Rubric rubric, Info info);
 	public List<Organization> findByRubricAndCity(Rubric rubric, City city);
 	public List<Organization> findByUser(User user);
 }

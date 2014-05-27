@@ -35,9 +35,9 @@ public class OrganizationDaoImpl implements OrganizationDao{
 	}
 	
 	@Override
-	public List<Organization> findByUserAndLogoAndRubricAndInfoOrganization(User user,Logo logo, Rubric rubric,
+	public List<Organization> findByUserAndLogoAndRubricAndInfo(User user,Logo logo, Rubric rubric,
 			Info info){
-		return organizationRepository.findByUserAndLogoAndRubricAndInfoOrganization(user, logo, rubric, info);
+		return organizationRepository.findByUserAndLogoAndRubricAndInfo(user, logo, rubric, info);
 	}
 
 	@Override

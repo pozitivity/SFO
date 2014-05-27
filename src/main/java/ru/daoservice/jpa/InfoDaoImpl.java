@@ -28,4 +28,10 @@ public class InfoDaoImpl implements InfoDao{
 	public List<Info> findAll(){
 		return (List<Info>)infoRepository.findAll();
 	}
+
+	@Override
+	public void save(Info info) {
+		infoRepository.save(info);
+		
+	}
 }

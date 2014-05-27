@@ -28,9 +28,9 @@ public class Info implements Serializable {
 	@Column(name = "info")
 	private String info;
 	
-	@OneToOne(optional = false, mappedBy = "info", fetch = FetchType.EAGER, 
-	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-	private Organization organization;
+	/*@OneToOne(optional = false, mappedBy = "info", fetch = FetchType.EAGER, 
+	cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)*/
+	//private Organization organization;
 	
 	public Info() {
 		
@@ -58,11 +58,11 @@ public class Info implements Serializable {
 		this.info = info;
 	}
 	
-	public Organization getContacts(){
+	/*public Organization getContacts(){
 		return organization;
 	}
 	
 	public void setContacts(Organization contacts){
 		this.organization = contacts;
-	}
+	}*/
 }

@@ -39,8 +39,11 @@ public class User implements Serializable{
 	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "blocked", nullable = true)
-	private boolean blocked;
+	@Column(name = "blocked")
+	private boolean blocked = true;
+	
+	@Column(name = "email")
+	private String email;
 	
 	@ManyToOne
 	@JoinColumn(name = "city_id")
@@ -55,12 +58,13 @@ public class User implements Serializable{
 		
 	}
 	
-	public User(Long userId, String login, String password,City city, TypeUser typeUser){
+	public User(Long userId, String login, String password,City city, TypeUser typeUser, String email){
 		this.userId = userId;
 		this.login = login;
 		this.password = password;
 		this.city = city;
 		this.typeUser = typeUser;
+		this.email = email;
 	}
 	
 	public Long getUserId(){
@@ -113,6 +117,14 @@ public class User implements Serializable{
 	
 	public void setTypeUser(TypeUser typeUser){
 		this.typeUser = typeUser;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
