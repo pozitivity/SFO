@@ -1,6 +1,7 @@
 package ru.rest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
@@ -60,7 +61,8 @@ public class OrganizationResource{
 			@QueryParam("cityId") Long cityId) {
 		Rubric rubric = rubricDao.findOne(rubricId);
 		City city = cityDao.findOne(cityId);
-		JsonOrganizations jOrganizations = OrganizationToJsonConverter.convertEntityListToJsonList(organizationDao.findByRubricAndCity(rubric, city));
+		boolean published = true;
+		JsonOrganizations jOrganizations = OrganizationToJsonConverter.convertEntityListToJsonList(organizationDao.findByRubricAndCityAndPublished(rubric, city, published));
 		return Response.ok(jOrganizations).build();
 	}
 	
@@ -107,5 +109,12 @@ public class OrganizationResource{
 		organizationDao.save(sOrganization);
 		
 		return Response.status(Status.CREATED).build();
+	}
+	
+	@DELETE
+	@Path("/deleteOrganization")
+	public Response deleteOrganizationsById(@QueryParam("organizationId") Long organizationId) {
+		Organization organization =  organizationDao.findOne(organizationId);
+		return Response.status(Status.NO_CONTENT).build();
 	}
 }

@@ -33,27 +33,54 @@ import org.springframework.mail.SimpleMailMessage;
 @Scope("request")
 public class UserResource{
 	@Autowired
-	private UserDao userService;
+	private UserDao userDao;
+	
 	@Autowired
 	private CityDao cityDao;
+	
 	@Autowired
 	private TypeUserDao typeUserDao;
-	/*@Autowired
-	private MailSender mailSender;*/
+	
+	@Autowired
+	private AuthenticationResource authenticationResource;
 	
 	@GET
-	@Path("users")
+	@Path("/byId")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response getAllUsers(){
-		JsonUsers jUsers = UserToJsonConverter.convertEntityListToJsonList(userService.findAll());
-		return Response.ok(jUsers).build();
+	public Response getUserById(@QueryParam("userId") Long userId) {
+		//User sUser = userDao.findOne(userId);
+		
+		User sUser = authenticationResource.getCurrentUser();
+		JsonUser jUser = UserToJsonConverter.convertEntityToJson(sUser);
+		return Response.ok(jUser).build();
+	}
+	
+	@GET
+	@Path("/updateUser")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
+	public Response updateUser(
+			@QueryParam("userId") Long userId,
+			@QueryParam("cityName") String cityName,
+			@QueryParam("email") String email,
+			@QueryParam("password") String password) {
+		User sUser = userDao.findOne(userId);
+		sUser.setEmail(email);
+		sUser.setPassword(password);
+		
+		City sCity = cityDao.findByCityName(cityName);
+		
+		sUser.setCity(sCity);
+		
+		userDao.save(sUser);
+		JsonUser jUser = UserToJsonConverter.convertEntityToJson(sUser);
+		return Response.ok(jUser).build();
 	}
 	
 	@GET
 	@Path("byLogin")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	public Response getUserByLogin(@QueryParam("login") String login){
-		JsonUser jUser = UserToJsonConverter.convertEntityToJson(userService.findByLogin(login));
+		JsonUser jUser = UserToJsonConverter.convertEntityToJson(userDao.findByLogin(login));
 		return Response.ok(jUser).build();
 	}
 	
@@ -75,7 +102,7 @@ public class UserResource{
 		Long typeUserId = id.longValue();
 		TypeUser sTypeUser = typeUserDao.findOne(typeUserId);
 		sUser.setTypeUser(sTypeUser);
-		userService.save(sUser);
+		userDao.save(sUser);
         
 		return Response.status(Status.CREATED).build();
 	}

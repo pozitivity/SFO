@@ -13,7 +13,9 @@ public interface OrganizationDao {
 	public Organization findOne(Long organizationId);
 	public List<Organization> findAll();
 	public List<Organization> findByUserAndLogoAndRubricAndInfo(User user, Logo logo, Rubric rubric, Info info);
-	public Organization save(Organization organization);
-	public List<Organization> findByRubricAndCity(Rubric rubric, City city);
+	public List<Organization> findByRubricAndCityAndPublished(Rubric rubric, City city, boolean published);
 	public List<Organization> findByUser(User user);
+	
+	public void delete(Organization organization);
+	public void save(Organization organization);
 }

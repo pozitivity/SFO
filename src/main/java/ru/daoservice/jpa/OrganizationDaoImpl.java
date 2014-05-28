@@ -41,13 +41,17 @@ public class OrganizationDaoImpl implements OrganizationDao{
 	}
 
 	@Override
-	public Organization save(Organization organization) {
-		return organizationRepository.save(organization);
+	public void save(Organization organization) {
+		 organizationRepository.save(organization);
+	}
+	
+	public void delete(Organization organization) {
+		organizationRepository.delete(organization);
 	}
 
 	@Override
-	public List<Organization> findByRubricAndCity(Rubric rubric, City city) {
-		return (List<Organization>)organizationRepository.findByRubricAndCity(rubric,city);
+	public List<Organization> findByRubricAndCityAndPublished(Rubric rubric, City city, boolean published) {
+		return (List<Organization>)organizationRepository.findByRubricAndCityAndPublished(rubric,city, published);
 	}
 
 	@Override

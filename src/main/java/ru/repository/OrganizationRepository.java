@@ -13,6 +13,6 @@ import ru.domain.Rubric;
 
 public interface OrganizationRepository extends PagingAndSortingRepository<Organization, Long>{
 	public List<Organization> findByUserAndLogoAndRubricAndInfo(User user, Logo logo, Rubric rubric, Info info);
-	public List<Organization> findByRubricAndCity(Rubric rubric, City city);
+	public List<Organization> findByRubricAndCityAndPublished(Rubric rubric, City city, boolean published);
 	public List<Organization> findByUser(User user);
 }
