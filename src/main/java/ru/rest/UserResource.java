@@ -98,7 +98,7 @@ public class UserResource{
 		City sCity = cityDao.findByCityName(cityName);
 		sUser.setCity(sCity);
 		sUser.setEmail(email);
-		Number id = 2;
+		Number id = 1;
 		Long typeUserId = id.longValue();
 		TypeUser sTypeUser = typeUserDao.findOne(typeUserId);
 		sUser.setTypeUser(sTypeUser);

@@ -58,4 +58,9 @@ public class OrganizationDaoImpl implements OrganizationDao{
 	public List<Organization> findByUser(User user) {
 		return (List<Organization>) organizationRepository.findByUser(user);
 	}
+
+	@Override
+	public List<Organization> findByPublished(boolean published) {
+		return (List<Organization>) organizationRepository.findByPublished(published);
+	}
 }

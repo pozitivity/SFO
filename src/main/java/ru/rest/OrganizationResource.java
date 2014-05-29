@@ -67,6 +67,64 @@ public class OrganizationResource{
 	}
 	
 	@GET
+	@Path("/byPublished")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=UTF-8"})
+	public Response getOrganizationsByPublished(){
+		boolean published = false;
+		JsonOrganizations jOrganizations = OrganizationToJsonConverter.convertEntityListToJsonList(organizationDao.findByPublished(published));
+		return Response.ok(jOrganizations).build();
+	}
+	
+	@GET
+	@Path("/changePublished")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
+	public Response changePublished(@QueryParam("organizationId") Long organizationId){
+		boolean published = true;
+		Organization sOrganization = organizationDao.findOne(organizationId);
+		sOrganization.setPublished(published);
+		organizationDao.save(sOrganization);
+		
+		return Response.status(Status.OK).build();
+	}
+	
+	@GET
+	@Path("/updateOrganization")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
+	public Response updateOrganization(@QueryParam("organizationId") Long organizationId,
+			@QueryParam("rubricId") Long rubricId,
+			@QueryParam("address") String address,
+			@QueryParam("infoId") Long infoId,
+			@QueryParam("logoId") Long logoId,
+			@QueryParam("cityId") Long cityId,
+			@QueryParam("website") String website,
+			@QueryParam("postcode") String postcode,
+			@QueryParam("name") String name,
+			@QueryParam("phone") String phone){
+		Organization sOrganization = organizationDao.findOne(organizationId);
+		
+		City sCity = cityDao.findOne(cityId);
+		Rubric sRubric = rubricDao.findOne(rubricId);
+		Logo sLogo = logoDao.findOne(logoId);
+		Info sInfo = infoDao.findOne(infoId);
+		
+		sOrganization.setAddress(address);
+		sOrganization.setCity(sCity);
+		sOrganization.setAddress(address);
+		sOrganization.setRubric(sRubric);
+		sOrganization.setInfo(sInfo);
+		sOrganization.setLogo(sLogo);
+		sOrganization.setWebsite(website);
+		sOrganization.setPostcode(postcode);
+		sOrganization.setPhone(phone);
+		sOrganization.setName(name);
+		
+		organizationDao.save(sOrganization);
+		
+		return Response.status(Status.CREATED).build();
+		
+	}
+	
+	@GET
 	@Path("/byUser")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	public Response getOrganizationsByUser(@QueryParam("userId") Long userId){
@@ -113,8 +171,9 @@ public class OrganizationResource{
 	
 	@DELETE
 	@Path("/deleteOrganization")
-	public Response deleteOrganizationsById(@QueryParam("organizationId") Long organizationId) {
+	public Response deleteOrganizationsById(@FormParam("organizationId") Long organizationId) {
 		Organization organization =  organizationDao.findOne(organizationId);
+		organizationDao.delete(organization);
 		return Response.status(Status.NO_CONTENT).build();
 	}
 }

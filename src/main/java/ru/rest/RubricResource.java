@@ -37,6 +37,15 @@ public class RubricResource{
 	}
 	
 	@GET
+	@Path("mainRubric")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
+	public Response getMainRubrci(@QueryParam("mainRubricId") Long mainRubricId) {
+		Rubric sRubric = rubricService.findOne(mainRubricId);
+		JsonRubric jRubric = RubricToJsonConverter.convertEntityToJson(sRubric);
+		return Response.ok(jRubric).build();
+	}
+	
+	@GET
 	@Path("rubricsall")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=UTF-8"})
 	public Response getMainRubrics(){

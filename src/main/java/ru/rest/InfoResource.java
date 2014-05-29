@@ -2,6 +2,7 @@ package ru.rest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -31,11 +32,24 @@ public class InfoResource{
 	@POST
 	@Path("/newInfo")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response getAllInfoOrganizations(@FormParam("info") String info){
+	public Response newInfo(@FormParam("info") String info){
 		Info sInfo = new Info();
 		sInfo.setInfo(info);
 		infoDao.save(sInfo);
 		JsonInfo jInfo = InfoToJsonConverter.convertEntityToJson(sInfo);
 		return Response.ok(jInfo).build();
 	}
+	
+	@PUT
+	@Path("/updateInfo")
+	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
+	public Response updateInfo(@FormParam("infoId") Long infoId,
+			@FormParam("info") String info) {
+		Info sInfo = infoDao.findOne(infoId);
+		sInfo.setInfo(info);
+		infoDao.save(sInfo);
+		JsonInfo jInfo = InfoToJsonConverter.convertEntityToJson(sInfo);
+		return Response.ok(jInfo).build();
+	}
+	
 }

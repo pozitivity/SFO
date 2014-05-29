@@ -15,4 +15,5 @@ public interface OrganizationRepository extends PagingAndSortingRepository<Organ
 	public List<Organization> findByUserAndLogoAndRubricAndInfo(User user, Logo logo, Rubric rubric, Info info);
 	public List<Organization> findByRubricAndCityAndPublished(Rubric rubric, City city, boolean published);
 	public List<Organization> findByUser(User user);
+	public List<Organization> findByPublished(boolean published);
 }
