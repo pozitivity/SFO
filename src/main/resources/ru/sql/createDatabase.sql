@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS organization(
 	user_id bigint unsigned NOT NULL,
 	city_id bigint unsigned NOT NULL,
 	website varchar(100) NOT NULL,
-	postcode varchar(100) NOT NULL,
+	postcode varchar(100),
 	name varchar(100) NOT NULL,
 	phone varchar(100) NOT NULL,
 	published boolean DEFAULT FALSE,
