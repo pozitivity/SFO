@@ -33,4 +33,8 @@ public class RubricDaoImpl implements RubricDao{
 	public List<Rubric> findByMainRubricId(Long id) {
 		return (List<Rubric>)rubricRepository.findByMainRubricId(id);
 	}
+	@Override
+	public Rubric findByName(String name) {
+		return rubricRepository.findByName(name);
+	}
 }

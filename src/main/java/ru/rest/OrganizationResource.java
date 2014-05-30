@@ -28,6 +28,7 @@ import ru.domain.Logo;
 import ru.domain.Organization;
 import ru.domain.Rubric;
 import ru.domain.User;
+import ru.rest.model.JsonOrganization;
 import ru.rest.model.JsonOrganizations;
 import ru.rest.model.converter.OrganizationToJsonConverter;
 
@@ -63,7 +64,12 @@ public class OrganizationResource{
 		City city = cityDao.findOne(cityId);
 		boolean published = true;
 		JsonOrganizations jOrganizations = OrganizationToJsonConverter.convertEntityListToJsonList(organizationDao.findByRubricAndCityAndPublished(rubric, city, published));
-		return Response.ok(jOrganizations).build();
+		
+		if(jOrganizations.getOrganizations().size() != 0 ){
+			return Response.ok(jOrganizations).build();
+		} else {
+			return Response.status(Status.NO_CONTENT).build();
+		}
 	}
 	
 	@GET
@@ -72,7 +78,12 @@ public class OrganizationResource{
 	public Response getOrganizationsByPublished(){
 		boolean published = false;
 		JsonOrganizations jOrganizations = OrganizationToJsonConverter.convertEntityListToJsonList(organizationDao.findByPublished(published));
-		return Response.ok(jOrganizations).build();
+		
+		if(jOrganizations.getOrganizations().size() != 0 ){
+			return Response.ok(jOrganizations).build();
+		} else {
+			return Response.status(Status.NO_CONTENT).build();
+		}
 	}
 	
 	@GET
@@ -84,26 +95,28 @@ public class OrganizationResource{
 		sOrganization.setPublished(published);
 		organizationDao.save(sOrganization);
 		
-		return Response.status(Status.OK).build();
+		JsonOrganization jOrganization = OrganizationToJsonConverter.convertEntityToJson(sOrganization);
+		
+		return Response.ok(jOrganization).build();
 	}
 	
-	@GET
+	@POST
 	@Path("/updateOrganization")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response updateOrganization(@QueryParam("organizationId") Long organizationId,
-			@QueryParam("rubricId") Long rubricId,
-			@QueryParam("address") String address,
-			@QueryParam("infoId") Long infoId,
-			@QueryParam("logoId") Long logoId,
-			@QueryParam("cityId") Long cityId,
-			@QueryParam("website") String website,
-			@QueryParam("postcode") String postcode,
-			@QueryParam("name") String name,
-			@QueryParam("phone") String phone){
+	public Response updateOrganization(@FormParam("organizationId") Long organizationId,
+			@FormParam("rubricName") String rubricName,
+			@FormParam("address") String address,
+			@FormParam("infoId") Long infoId,
+			@FormParam("logoId") Long logoId,
+			@FormParam("cityName") String cityName,
+			@FormParam("website") String website,
+			@FormParam("postcode") String postcode,
+			@FormParam("name") String name,
+			@FormParam("phone") String phone){
 		Organization sOrganization = organizationDao.findOne(organizationId);
 		
-		City sCity = cityDao.findOne(cityId);
-		Rubric sRubric = rubricDao.findOne(rubricId);
+		City sCity = cityDao.findByCityName(cityName);
+		Rubric sRubric = rubricDao.findByName(rubricName);
 		Logo sLogo = logoDao.findOne(logoId);
 		Info sInfo = infoDao.findOne(infoId);
 		
@@ -130,7 +143,12 @@ public class OrganizationResource{
 	public Response getOrganizationsByUser(@QueryParam("userId") Long userId){
 		User user = userDao.findOne(userId);
 		JsonOrganizations jOrganizations = OrganizationToJsonConverter.convertEntityListToJsonList(organizationDao.findByUser(user));
-		return Response.ok(jOrganizations).build();
+		
+		if(jOrganizations.getOrganizations().size() != 0 ){
+			return Response.ok(jOrganizations).build();
+		} else {
+			return Response.status(Status.NO_CONTENT).build();
+		}
 	}
 	
 	@POST

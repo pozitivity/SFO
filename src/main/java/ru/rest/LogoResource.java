@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 
 import javax.swing.ImageIcon;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
@@ -66,6 +67,7 @@ public class LogoResource{
 		JsonLogo jLogo = LogoToJsonConverter.convertEntityToJson(logoService.save(sLogo));
 		return Response.ok(jLogo).build();
 	}
+	
 	
 	@GET
 	 @Path("/byId")

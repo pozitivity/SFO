@@ -10,6 +10,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -42,58 +43,12 @@ public class CityResource{
 	@Path("/city")
 	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
 	public Response findById(@QueryParam("cityId") Long cityId){
-		JsonCity Id = CityToJsonConverter.convertEntityToJson(cityService.findOne(cityId));
-		if(Id != null){
-			return Response.status(200).entity(Id).build();
-		}else{
-			return Response.status(404).entity("The city with the id " + cityId + "does not exist").build();
-		}
-	}
-	
-	@GET
-	@Path("/newCity")
-	@Produces({MediaType.APPLICATION_JSON + ";chraset=utf-8"})
-	@Consumes({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response saveCity(@QueryParam("cityName") String cityName){
-		City sCity = new City();
-		sCity.setCityName(cityName);
-		if(sCity != null){
-			JsonCity jCity = CityToJsonConverter.convertEntityToJson(cityService.save(sCity));
+		JsonCity jCity = CityToJsonConverter.convertEntityToJson(cityService.findOne(cityId));
+		if(jCity != null){
 			return Response.ok(jCity).build();
-		} else
-			return Response.status(404).entity("Failure creation new city").build();
-	}
-	
-	@GET
-	@Path("/deleteCity")
-	@Produces({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	@Consumes({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response deleteCity(@QueryParam("cityId") Long cityId){
-		City sCity = new City();
-		sCity.setCityId(cityId);
-		sCity.getCityName();
-		if(sCity != null){
-			JsonCity jCity = CityToJsonConverter.convertEntityToJson(sCity);
-			cityService.delete(sCity);
-			return Response.status(200).entity(jCity).build();
 		}else{
-			return Response.status(404).entity("Failure delete city").build();
+			return Response.status(Status.NO_CONTENT).build();
 		}
-	}
-	
-	@GET
-	@Path("/updateCity")
-	@Produces({MediaType.APPLICATION_JSON + ";chraset=utf-8"})
-	@Consumes({MediaType.APPLICATION_JSON + ";charset=utf-8"})
-	public Response updateCity(@QueryParam("cityId") Long cityId, @QueryParam("cityName") String cityName, City sCity){
-		//City sCity = new City();
-		sCity.setCityName(cityName);
-		sCity.setCityId(cityId);
-		if(sCity != null){
-			JsonCity jCity = CityToJsonConverter.convertEntityToJson(cityService.update(sCity));
-			return Response.status(200).entity(jCity).build();
-		} else
-			return Response.status(404).entity("Failure update city").build();
 	}
 	
 }
